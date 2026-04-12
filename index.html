@@ -19,97 +19,159 @@
       --purple: #bc8cff;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    html { font-size: 16px; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-text-size-adjust: 100%; }
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .header { border-bottom: 1px solid var(--border); padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
-    .header .meta { font-size: 13px; color: var(--text-muted); }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+    /* Header */
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+    .header h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; white-space: nowrap; }
+    .header .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .header .meta { font-size: 11px; color: var(--text-muted); text-align: right; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; white-space: nowrap; }
     .badge.live { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
     .badge.alert { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
-    .badge.warn { background: rgba(210,153,34,0.15); color: var(--yellow); border: 1px solid rgba(210,153,34,0.3); }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px 20px 40px; }
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 16px 12px 40px; }
 
     /* Markets Overview */
-    .markets-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 28px; }
-    .market-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-    .market-card .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-    .market-card .value { font-size: 22px; font-weight: 700; }
-    .market-card .change { font-size: 13px; font-weight: 500; margin-top: 4px; }
+    .markets-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .market-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px; min-width: 0; }
+    .market-card .label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .market-card .value { font-size: 18px; font-weight: 700; line-height: 1.2; }
+    .market-card .change { font-size: 11px; font-weight: 500; margin-top: 4px; line-height: 1.3; }
     .market-card .change.up { color: var(--green); }
     .market-card .change.down { color: var(--red); }
     .market-card .change.neutral { color: var(--text-muted); }
 
     /* Section titles */
-    .section-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
-    .section-title .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .section-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .section-title .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .section-title .dot.red { background: var(--red); }
     .section-title .dot.green { background: var(--green); }
     .section-title .dot.yellow { background: var(--yellow); }
     .section-title .dot.blue { background: var(--blue); }
     .section-title .dot.purple { background: var(--purple); }
 
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 20px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
     .card:last-child { margin-bottom: 0; }
 
     /* Top stories */
-    .story { padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .story { padding: 12px 0; border-bottom: 1px solid var(--border); }
     .story:last-child { border-bottom: none; padding-bottom: 0; }
     .story:first-child { padding-top: 0; }
-    .story .headline { font-size: 15px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
-    .story .headline .tag { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-right: 6px; text-transform: uppercase; }
+    .story .headline { font-size: 14px; font-weight: 600; margin-bottom: 5px; line-height: 1.4; }
+    .story .headline .tag { font-size: 9px; font-weight: 700; padding: 2px 5px; border-radius: 4px; margin-right: 5px; text-transform: uppercase; white-space: nowrap; }
     .story .headline .tag.breaking { background: var(--red); color: #fff; }
     .story .headline .tag.analysis { background: rgba(88,166,255,0.15); color: var(--blue); }
     .story .headline .tag.update { background: rgba(188,140,255,0.15); color: var(--purple); }
-    .story .summary { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
-    .story .source { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
-    .story .source span { margin-right: 12px; }
+    .story .summary { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+    .story .source { font-size: 10px; color: var(--text-muted); margin-top: 5px; }
+    .story .source span { margin-right: 10px; }
 
     /* Analyst calls */
-    .call-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .call-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
     .call-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .call-item .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-    .call-item .details { flex: 1; }
-    .call-item .ticker { font-size: 13px; font-weight: 700; color: var(--text); }
-    .call-item .action { font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+    .call-item .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .call-item .details { flex: 1; min-width: 0; }
+    .call-item .ticker { font-size: 12px; font-weight: 700; color: var(--text); }
+    .call-item .action { font-size: 11px; font-weight: 600; margin-bottom: 2px; }
     .call-item .action.up { color: var(--green); }
     .call-item .action.down { color: var(--red); }
-    .call-item .note { font-size: 12px; color: var(--text-muted); }
+    .call-item .note { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
 
     /* Macro */
-    .macro-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .macro-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
     .macro-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .macro-item .event { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
-    .macro-item .desc { font-size: 12px; color: var(--text-muted); }
+    .macro-item .event { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+    .macro-item .desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
 
     /* Social */
-    .social-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .social-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
     .social-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .social-item .platform { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; letter-spacing: 0.5px; }
-    .social-item .quote { font-size: 13px; color: var(--text); font-style: italic; margin-bottom: 4px; line-height: 1.5; }
-    .social-item .attribution { font-size: 11px; color: var(--text-muted); }
+    .social-item .platform { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; letter-spacing: 0.5px; }
+    .social-item .quote { font-size: 12px; color: var(--text); font-style: italic; margin-bottom: 3px; line-height: 1.5; }
+    .social-item .attribution { font-size: 10px; color: var(--text-muted); }
+
+    /* Earnings grid */
+    .earnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .earnings-grid > div { font-size: 12px; }
+    .earnings-grid .gk { font-weight: 600; margin-bottom: 4px; color: var(--text); }
+    .earnings-grid .gv { color: var(--text-muted); line-height: 1.5; }
 
     /* Footer */
-    .footer { text-align: center; padding: 24px; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 20px; }
+    .footer { text-align: center; padding: 20px 16px; font-size: 10px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 16px; line-height: 1.5; }
 
-    .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-    .tag-row .tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; background: rgba(88,166,255,0.1); color: var(--blue); }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      html { font-size: 15px; }
+      .header { padding: 12px 14px; }
+      .header h1 { font-size: 16px; }
+      .header .meta { font-size: 10px; }
+      .container { padding: 12px 12px 32px; }
+
+      .markets-bar { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .market-card { padding: 10px 8px; }
+      .market-card .label { font-size: 9px; }
+      .market-card .value { font-size: 15px; }
+      .market-card .change { font-size: 10px; }
+
+      .grid-2 { grid-template-columns: 1fr; gap: 12px; }
+      .card { padding: 14px; margin-bottom: 12px; }
+      .story .headline { font-size: 13px; }
+      .story .summary { font-size: 11px; }
+
+      .section-title { font-size: 12px; }
+      .earnings-grid { grid-template-columns: 1fr; gap: 10px; }
+    }
+
+    @media (max-width: 480px) {
+      html { font-size: 14px; }
+      .header h1 { font-size: 15px; }
+      .header-right { align-items: flex-start !important; }
+      .header .meta { text-align: left; }
+
+      .markets-bar { grid-template-columns: repeat(2, 1fr); }
+      .market-card .value { font-size: 14px; }
+
+      .call-item .icon { font-size: 16px; }
+      .call-item .ticker { font-size: 11px; }
+      .call-item .note { font-size: 10px; }
+
+      .social-item .quote { font-size: 11px; }
+      .macro-item .event { font-size: 12px; }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
   <h1>📈 FinanceNews</h1>
-  <div>
+  <div class="header-right">
     <span class="badge live">● LIVE</span>
     <span class="badge alert">⚠ CEASEFIRE FRAGILE</span>
-    <span class="meta">Updated: Apr 12, 2026 · 06:15 UTC · Sources: CNBC · Yahoo Finance · Seeking Alpha</span>
+    <span class="meta">Apr 12, 2026 · 06:15 UTC · Sources: CNBC · Yahoo Finance · Seeking Alpha</span>
   </div>
 </div>
 
@@ -140,12 +202,12 @@
     <div class="market-card">
       <div class="label">Gold</div>
       <div class="value">~$2,380</div>
-      <div class="change up">▲ Back-to-back weekly gains</div>
+      <div class="change up">▲ Back-to-back gains</div>
     </div>
     <div class="market-card">
       <div class="label">US Oil</div>
       <div class="value">~$98–100</div>
-      <div class="change up">▲ Record exports + Iran risk</div>
+      <div class="change up">▲ Record exports + Iran</div>
     </div>
   </div>
 
@@ -153,48 +215,33 @@
   <div class="section-title"><span class="dot red"></span> Top Stories</div>
   <div class="card">
     <div class="story">
-      <div class="headline">
-        <span class="tag breaking">BREAKING</span>
-        Vance Returns From Pakistan Without Iran Deal — Ceasefire on Knife Edge
-      </div>
-      <div class="summary">VP JD Vance returned to the US without a formal agreement to end the Iran war. Ceasefire is in effect but Iran has accused Israel and the US of violating it with strikes in Lebanon. High-level talks continue in Islamabad — described as "make or break" by Pakistan's PM.</div>
+      <div class="headline"><span class="tag breaking">BREAKING</span>Vance Returns Without Iran Deal — Ceasefire on Knife Edge</div>
+      <div class="summary">VP JD Vance returned to the US without a formal agreement to end the Iran war. Ceasefire is in effect but Iran has accused Israel/US of violating it with strikes in Lebanon. High-level talks continue in Islamabad — "make or break" per Pakistan's PM.</div>
       <div class="source"><span>📺 CNBC</span><span>🕐 Apr 11, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline">
-        <span class="tag breaking">MARKETS</span>
-        S&P 500 Posts Best Week Since November on Iran Ceasefire
-      </div>
-      <div class="summary">Markets rallied last week as the temporary ceasefire deal was announced. Cramer however warned of "overconfident" markets, noting the fragile political situation and unresolved Strait of Hormuz blockade.</div>
+      <div class="headline"><span class="tag breaking">MARKETS</span>S&P 500 Posts Best Week Since November on Iran Ceasefire</div>
+      <div class="summary">Markets rallied last week on the ceasefire deal. Cramer warned of "overconfident" markets given the fragile political situation and unresolved Strait of Hormuz blockade.</div>
       <div class="source"><span>📺 CNBC</span><span>🕐 Apr 11, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline">
-        <span class="tag analysis">ANALYSIS</span>
-        US Oil Exports Hit Record 5.2M bbl/day as Iran War Sparks Global Supply Race
-      </div>
-      <div class="summary">With the Strait of Hormuz still partially blocked, the US is exporting record amounts of oil. Trump has demanded the reopening of the Strait. Oil prices remain elevated above $98/barrel.</div>
+      <div class="headline"><span class="tag analysis">ANALYSIS</span>US Oil Exports Hit Record 5.2M bbl/day — Strait of Hormuz Still Disrupted</div>
+      <div class="summary">With the Strait partially blocked, the US is exporting record oil. Trump demanded reopening of the Strait. Oil remains elevated above $98/barrel.</div>
       <div class="source"><span>📊 Seeking Alpha</span><span>🕐 Apr 12, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline">
-        <span class="tag breaking">ALERT</span>
-        Michael Burry Doubles Down on Short — Buys JD.com, Alibaba, Nvidia Puts
-      </div>
-      <div class="summary">The Big Short investor disclosed new positions in JD.com, Alibaba, and additional Nvidia put options. He remains persistently short Palantir despite Trump's public praise of the company. Palantir had its worst week in over a year.</div>
-      <div class="source"><span>📺 CNBC</span><span>📊 Seeking Alpha</span><span>🕐 Apr 10, 2026</span></div>
+      <div class="headline"><span class="tag breaking">ALERT</span>Michael Burry Doubles Down — Buys JD.com, Alibaba, Nvidia Puts; Still Short Palantir</div>
+      <div class="summary">The Big Short investor disclosed new positions in JD.com, Alibaba, and additional Nvidia puts. He remains persistently short Palantir despite Trump's public praise. Palantir had its worst week in over a year.</div>
+      <div class="source"><span>📺 CNBC · 📊 SA</span><span>🕐 Apr 10, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline">
-        <span class="tag update">UPDATE</span>
-        Anthropic Managed Agents Launch Hits CDN Players — Fastly, Cloudflare, Akamai All Down
-      </div>
-      <div class="summary">Cloud infrastructure watchers saw CDN providers tumble after Anthropic launched its Managed Agents platform, signaling a potential shift in how AI companies consume compute infrastructure away from traditional CDN players.</div>
+      <div class="headline"><span class="tag update">UPDATE</span>Anthropic Managed Agents Launch Hits CDN Players — Fastly, Cloudflare, Akamai Fall</div>
+      <div class="summary">CDN providers tumbled after Anthropic launched its Managed Agents platform, signaling potential shift in AI compute infrastructure consumption away from traditional CDN players.</div>
       <div class="source"><span>📊 Seeking Alpha</span><span>🕐 Apr 11, 2026</span></div>
     </div>
   </div>
 
-  <!-- Two-column below -->
+  <!-- Two-column -->
   <div class="grid-2">
 
     <!-- Sector Watch -->
@@ -203,114 +250,74 @@
       <div class="card">
         <div class="call-item">
           <div class="icon">📦</div>
-          <div class="details">
-            <div class="ticker">COHR</div>
-            <div class="action up">COHERENT SURGES</div>
-            <div class="note">Advances in key silicon carbide tech — analyst likes it</div>
-          </div>
+          <div class="details"><div class="ticker">COHR</div><div class="action up">COHERENT SURGES</div><div class="note">Advances in silicon carbide tech — analyst bullish</div></div>
         </div>
         <div class="call-item">
           <div class="icon">🏭</div>
-          <div class="details">
-            <div class="ticker">APLD</div>
-            <div class="action up">APPLIED DIGITAL +CLARITY</div>
-            <div class="note">Post-earnings clarity confirms accelerated path to $1B NOI target</div>
-          </div>
+          <div class="details"><div class="ticker">APLD</div><div class="action up">APPLIED DIGITAL +CLARITY</div><div class="note">Post-earnings: accelerated path to $1B NOI target</div></div>
         </div>
         <div class="call-item">
           <div class="icon">🔋</div>
-          <div class="details">
-            <div class="ticker">NBIS</div>
-            <div class="action up">NEBIUS: NEXT AI HYPERSCALER</div>
-            <div class="note">Emerging as viable AI infrastructure play, per SA analysis</div>
-          </div>
+          <div class="details"><div class="ticker">NBIS</div><div class="action up">NEBIUS: NEXT AI HYPERSCALER</div><div class="note">Emerging as viable AI infrastructure play</div></div>
         </div>
         <div class="call-item">
           <div class="icon">👟</div>
-          <div class="details">
-            <div class="ticker">NKE</div>
-            <div class="action down">NIKE DROPS — DAMINING DOWNGRADE</div>
-            <div class="note">Cramer calls it a "damning" analyst downgrade</div>
-          </div>
+          <div class="details"><div class="ticker">NKE</div><div class="action down">NIKE DROPS — "DAMNING" DOWNGRADE</div><div class="note">Cramer calls analyst call "damning"</div></div>
         </div>
         <div class="call-item">
           <div class="icon">☁️</div>
-          <div class="details">
-            <div class="ticker">MSFT</div>
-            <div class="action up">AZURE BOOMING</div>
-            <div class="note">But OpenAI/Copilot quietly capping upside — mixed picture</div>
-          </div>
+          <div class="details"><div class="ticker">MSFT</div><div class="action up">AZURE BOOMING</div><div class="note">But OpenAI/Copilot quietly capping upside</div></div>
         </div>
         <div class="call-item">
           <div class="icon">💾</div>
-          <div class="details">
-            <div class="ticker">SNDK</div>
-            <div class="action up">SANDISK RALLY BACKED</div>
-            <div class="note">Rally backed by something bigger, per SA analysis</div>
-          </div>
+          <div class="details"><div class="ticker">SNDK</div><div class="action up">SANDISK RALLY BACKED</div><div class="note">Rally backed by something bigger</div></div>
         </div>
         <div class="call-item">
           <div class="icon">📉</div>
-          <div class="details">
-            <div class="ticker">PLTR</div>
-            <div class="action down">PALANTIR WORST WEEK IN 1+ YR</div>
-            <div class="note">Despite Trump praise — Iran war drag + Burry short</div>
-          </div>
+          <div class="details"><div class="ticker">PLTR</div><div class="action down">PALANTIR WORST WEEK IN 1+ YR</div><div class="note">Despite Trump praise — Iran war drag</div></div>
         </div>
         <div class="call-item">
           <div class="icon">🧠</div>
-          <div class="details">
-            <div class="ticker">INTC</div>
-            <div class="action up">INTEL: MOST OVERBOUGHT</div>
-            <div class="note">Leads most overbought list after comeback rally</div>
-          </div>
+          <div class="details"><div class="ticker">INTC</div><div class="action up">INTEL: MOST OVERBOUGHT</div><div class="note">Leads overbought list after comeback rally</div></div>
         </div>
         <div class="call-item">
           <div class="icon">⚡</div>
-          <div class="details">
-            <div class="ticker">TSLA</div>
-            <div class="action up">TESLA UPGRADED: BYE-BYE → BUY-BUY</div>
-            <div class="note">Rating upgrade from sell-side; momentum shifting</div>
-          </div>
+          <div class="details"><div class="ticker">TSLA</div><div class="action up">TESLA UPGRADED: BYE-BYE → BUY-BUY</div><div class="note">Rating upgrade; momentum shifting</div></div>
         </div>
         <div class="call-item">
           <div class="icon">💳</div>
-          <div class="details">
-            <div class="ticker">C</div>
-            <div class="action down">CITI DOWNGRADES 6 SOFTWARE STOCKS</div>
-            <div class="note">AI concerns intensifying — broad sector caution</div>
-          </div>
+          <div class="details"><div class="ticker">C</div><div class="action down">CITI DOWNGRADES 6 SOFTWARE STOCKS</div><div class="note">AI concerns intensifying — sector caution</div></div>
         </div>
       </div>
     </div>
 
-    <!-- Right column: Macro + Social -->
+    <!-- Macro + Social -->
     <div>
       <div class="section-title"><span class="dot yellow"></span> Macro & Fed Monitor</div>
       <div class="card">
         <div class="macro-item">
           <div class="event">🏛 Powell & Bessent Summon Bank CEOs — Urgent Meeting</div>
-          <div class="desc">Federal Reserve and Treasury called an emergency meeting with major bank CEOs. Details limited but signals concern over credit market liquidity and private credit stress.</div>
+          <div class="desc">Fed and Treasury called an emergency meeting with major bank CEOs. Signals concern over credit market liquidity and private credit stress.</div>
         </div>
         <div class="macro-item">
           <div class="event">💰 Ceasefire Boosts Risk Sentiment — But Fragile</div>
-          <div class="desc">Markets rallied on the ceasefire news but analysts warn the underlying Iran geopolitical risk remains elevated. Strait of Hormuz still not fully reopened.</div>
+          <div class="desc">Markets rallied on ceasefire news but analysts warn geopolitical risk remains elevated. Strait of Hormuz still not fully reopened.</div>
         </div>
         <div class="macro-item">
           <div class="event">📊 ~50% of Americans: Income Can't Keep Up With Prices</div>
-          <div class="desc">New polling shows half of households feel squeezed by inflation. Social Security COLA estimate for 2027 ticks higher with gas prices — watch for policy response.</div>
+          <div class="desc">New polling shows half of households feel squeezed. Social Security COLA estimate for 2027 ticks higher with gas prices.</div>
         </div>
         <div class="macro-item">
           <div class="event">🏥 WHO Warns: Attacks Near Iranian Nuclear Sites</div>
-          <div class="desc">World Health Organization alarm over health and environmental risks from attacks near Iran's nuclear facilities. Geopolitical tail risk remains.</div>
+          <div class="desc">World Health Organization alarmed over health and environmental risks from attacks near Iran's nuclear facilities.</div>
         </div>
         <div class="macro-item">
           <div class="event">🇪🇺 Europe Pharma Era Fading — Trump Biotech Tariffs</div>
-          <div class="desc">Trump's MFN tariffs on China and biotech policy shifts are ending Europe's pharma dominance era. European pharma stocks under pressure.</div>
+          <div class="desc">Trump's MFN tariffs on biotech shifts are ending Europe's pharma dominance era. European pharma stocks under pressure.</div>
         </div>
       </div>
 
-      <div class="section-title" style="margin-top: 8px;"><span class="dot purple"></span> Social Sentiment</div>
+      <div class="section-title" style="margin-top:4px;"><span class="dot purple"></span> Social Sentiment</div>
       <div class="card">
         <div class="social-item">
           <div class="platform">Reddit · r/wallstreetbets</div>
@@ -324,7 +331,7 @@
         </div>
         <div class="social-item">
           <div class="platform">Seeking Alpha Poll</div>
-          <div class="quote">"Which AI company has the most viable business plan?" — SA community polling shows Anthropic and OpenAI leading, but investors skeptical of monetization.</div>
+          <div class="quote">"Which AI company has the most viable business plan?" — Anthropic and OpenAI leading but investors skeptical of monetization.</div>
           <div class="attribution">SA Asks · Apr 11, 2026</div>
         </div>
         <div class="social-item">
@@ -337,27 +344,17 @@
 
   </div>
 
-  <!-- Notable Earnings Ahead -->
-  <div class="section-title" style="margin-top: 8px;"><span class="dot blue"></span> Earnings Watch · Week of Apr 13–17</div>
+  <!-- Earnings Watch -->
+  <div class="section-title" style="margin-top:4px;"><span class="dot blue"></span> Earnings Watch · Apr 13–17</div>
   <div class="card">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+    <div class="earnings-grid">
       <div>
-        <div style="font-size:13px;font-weight:600;">Apr 13–17 Key Reports</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:6px;">
-          • Major banks reporting (JPM, WFC)<br>
-          • Big tech earnings season winding down<br>
-          • Semiconductor names (Marvell: already cited)<br>
-          • Retail: consumer discretionary in focus
-        </div>
+        <div class="gk">📋 Key Reports This Week</div>
+        <div class="gv">Major banks (JPM, WFC) · Big tech winding down · Semis (Marvell cited) · Consumer discretionary</div>
       </div>
       <div>
-        <div style="font-size:13px;font-weight:600;">Analyst Expectation Signals</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:6px;">
-          • Earnings season could bring good news<br>
-          • Fixed income investors seeking yield amid geopolitical risk<br>
-          • Credit markets watching for private credit ETF stress<br>
-          • Semiconductor packaging/testing stocks poised for AI boom
-        </div>
+        <div class="gk">📊 Analyst Expectation Signals</div>
+        <div class="gv">Earnings season could bring good news · Fixed income seeking yield amid geopolitical risk · Credit markets watching private credit ETF stress</div>
       </div>
     </div>
   </div>
