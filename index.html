@@ -123,28 +123,61 @@
     /* Footer */
     .footer { text-align: center; padding: 20px 16px; font-size: 10px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 16px; line-height: 1.5; }
 
-    /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      html { font-size: 15px; }
       .header { padding: 12px 14px; }
-      .header h1 { font-size: 16px; }
-      .header .meta { font-size: 10px; }
-      .container { padding: 12px 12px 32px; }
+      .header h1 { font-size: 18px; }
+      .header .meta { font-size: 11px; }
+      .header-right { align-items: flex-start !important; }
+      .header .meta { text-align: left; }
+      .container { padding: 14px 14px 32px; }
 
-      .markets-bar { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .market-card { padding: 10px 8px; }
-      .market-card .label { font-size: 9px; }
-      .market-card .value { font-size: 15px; }
-      .market-card .change { font-size: 10px; }
+      /* Markets: 2 cols = larger cards, bigger text */
+      .markets-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .market-card { padding: 14px 12px; }
+      .market-card .label { font-size: 11px; }
+      .market-card .value { font-size: 20px; }
+      .market-card .change { font-size: 12px; }
 
       .grid-2 { grid-template-columns: 1fr; gap: 12px; }
       .card { padding: 14px; margin-bottom: 12px; }
-      .story .headline { font-size: 13px; }
-      .story .summary { font-size: 11px; }
+      .story .headline { font-size: 15px; }
+      .story .summary { font-size: 13px; }
+      .section-title { font-size: 14px; }
 
-      .section-title { font-size: 12px; }
+      .call-item .ticker { font-size: 13px; }
+      .call-item .action { font-size: 12px; }
+      .call-item .note { font-size: 12px; }
+      .macro-item .event { font-size: 14px; }
+      .macro-item .desc { font-size: 12px; }
+      .social-item .quote { font-size: 13px; }
       .earnings-grid { grid-template-columns: 1fr; gap: 10px; }
     }
+
+    @media (max-width: 480px) {
+      .header h1 { font-size: 16px; }
+      .container { padding: 12px 12px 28px; }
+
+      .markets-bar { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .market-card { padding: 12px 10px; }
+      .market-card .label { font-size: 10px; }
+      .market-card .value { font-size: 18px; }
+      .market-card .change { font-size: 11px; }
+      .story .headline { font-size: 14px; }
+      .story .summary { font-size: 12px; }
+      .story .source { font-size: 10px; }
+
+      .call-item .icon { font-size: 16px; }
+      .call-item .ticker { font-size: 12px; }
+      .call-item .action { font-size: 11px; }
+      .call-item .note { font-size: 11px; }
+
+      .macro-item .event { font-size: 13px; }
+      .macro-item .desc { font-size: 11px; }
+      .social-item .quote { font-size: 12px; }
+      .social-item .attribution { font-size: 10px; }
+    }
+
 
     @media (max-width: 480px) {
       html { font-size: 14px; }
