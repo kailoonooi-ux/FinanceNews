@@ -24,7 +24,6 @@
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* Header */
     .header {
       border-bottom: 1px solid var(--border);
       padding: 16px 16px;
@@ -44,11 +43,10 @@
     .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; white-space: nowrap; }
     .badge.live { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
     .badge.alert { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+    .badge.warn { background: rgba(210,153,34,0.15); color: var(--yellow); border: 1px solid rgba(210,153,34,0.3); }
 
-    /* Container */
     .container { max-width: 1200px; margin: 0 auto; padding: 16px 12px 40px; }
 
-    /* Markets Overview */
     .markets-bar {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -62,8 +60,8 @@
     .market-card .change.up { color: var(--green); }
     .market-card .change.down { color: var(--red); }
     .market-card .change.neutral { color: var(--text-muted); }
+    .market-card .change.alert { color: var(--red); font-weight: 700; }
 
-    /* Section titles */
     .section-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
     .section-title .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .section-title .dot.red { background: var(--red); }
@@ -78,7 +76,6 @@
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
     .card:last-child { margin-bottom: 0; }
 
-    /* Top stories */
     .story { padding: 12px 0; border-bottom: 1px solid var(--border); }
     .story:last-child { border-bottom: none; padding-bottom: 0; }
     .story:first-child { padding-top: 0; }
@@ -91,7 +88,6 @@
     .story .source { font-size: 10px; color: var(--text-muted); margin-top: 5px; }
     .story .source span { margin-right: 10px; }
 
-    /* Analyst calls */
     .call-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
     .call-item:last-child { border-bottom: none; padding-bottom: 0; }
     .call-item .icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
@@ -102,29 +98,24 @@
     .call-item .action.down { color: var(--red); }
     .call-item .note { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
 
-    /* Macro */
     .macro-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
     .macro-item:last-child { border-bottom: none; padding-bottom: 0; }
     .macro-item .event { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
     .macro-item .desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
 
-    /* Social */
     .social-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
     .social-item:last-child { border-bottom: none; padding-bottom: 0; }
     .social-item .platform { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; letter-spacing: 0.5px; }
     .social-item .quote { font-size: 12px; color: var(--text); font-style: italic; margin-bottom: 3px; line-height: 1.5; }
     .social-item .attribution { font-size: 10px; color: var(--text-muted); }
 
-    /* Earnings grid */
     .earnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .earnings-grid > div { font-size: 12px; }
     .earnings-grid .gk { font-weight: 600; margin-bottom: 4px; color: var(--text); }
     .earnings-grid .gv { color: var(--text-muted); line-height: 1.5; }
 
-    /* Footer */
     .footer { text-align: center; padding: 20px 16px; font-size: 10px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 16px; line-height: 1.5; }
 
-        /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .header { padding: 12px 14px; }
       .header h1 { font-size: 18px; }
@@ -132,20 +123,16 @@
       .header-right { align-items: flex-start !important; }
       .header .meta { text-align: left; }
       .container { padding: 14px 14px 32px; }
-
-      /* Markets: 2 cols = larger cards, bigger text */
       .markets-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .market-card { padding: 14px 12px; }
       .market-card .label { font-size: 11px; }
       .market-card .value { font-size: 20px; }
       .market-card .change { font-size: 12px; }
-
       .grid-2 { grid-template-columns: 1fr; gap: 12px; }
       .card { padding: 14px; margin-bottom: 12px; }
       .story .headline { font-size: 15px; }
       .story .summary { font-size: 13px; }
       .section-title { font-size: 14px; }
-
       .call-item .ticker { font-size: 13px; }
       .call-item .action { font-size: 12px; }
       .call-item .note { font-size: 12px; }
@@ -158,7 +145,6 @@
     @media (max-width: 480px) {
       .header h1 { font-size: 16px; }
       .container { padding: 12px 12px 28px; }
-
       .markets-bar { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .market-card { padding: 12px 10px; }
       .market-card .label { font-size: 10px; }
@@ -167,19 +153,15 @@
       .story .headline { font-size: 14px; }
       .story .summary { font-size: 12px; }
       .story .source { font-size: 10px; }
-
       .call-item .icon { font-size: 16px; }
       .call-item .ticker { font-size: 12px; }
       .call-item .action { font-size: 11px; }
       .call-item .note { font-size: 11px; }
-
       .macro-item .event { font-size: 13px; }
       .macro-item .desc { font-size: 11px; }
       .social-item .quote { font-size: 12px; }
       .social-item .attribution { font-size: 10px; }
     }
-
-
   </style>
 </head>
 <body>
@@ -187,9 +169,9 @@
 <div class="header">
   <h1>📈 FinanceNews</h1>
   <div class="header-right">
-    <span class="badge live">● LIVE</span>
-    <span class="badge alert">⚠ CEASEFIRE FRAGILE</span>
-    <span class="meta">Apr 12, 2026 · 06:15 UTC · Sources: CNBC · Yahoo Finance · Seeking Alpha</span>
+    <span class="badge alert">⚠ OIL SHOCK</span>
+    <span class="badge warn">🔴 HORGUZ BLOCKADE</span>
+    <span class="meta">Apr 13, 2026 · 00:00 UTC · Sources: CNBC · Yahoo Finance · Straits Times</span>
   </div>
 </div>
 
@@ -198,34 +180,34 @@
   <!-- Markets Overview -->
   <div class="markets-bar">
     <div class="market-card">
-      <div class="label">S&P 500</div>
-      <div class="value">~5,200</div>
-      <div class="change up">▲ Best week since Nov '25</div>
+      <div class="label">S&P 500 Futures</div>
+      <div class="value">—</div>
+      <div class="change down">▼ –1.1% (pre-market)</div>
     </div>
     <div class="market-card">
-      <div class="label">Nasdaq</div>
-      <div class="value">~16,400</div>
-      <div class="change up">▲ Post-ceasefire rally</div>
+      <div class="label">Nasdaq 100 Futures</div>
+      <div class="value">—</div>
+      <div class="change down">▼ –1.2%</div>
     </div>
     <div class="market-card">
-      <div class="label">Dow Jones</div>
-      <div class="value">~39,100</div>
-      <div class="change neutral">→ Mixed session</div>
+      <div class="label">Dow Futures</div>
+      <div class="value">—</div>
+      <div class="change down">▼ –517 pts (–1.1%)</div>
+    </div>
+    <div class="market-card">
+      <div class="label">WTI Crude Oil</div>
+      <div class="value">$104.19</div>
+      <div class="change down alert">▲ +8% — SPIKE</div>
+    </div>
+    <div class="market-card">
+      <div class="label">Brent Crude</div>
+      <div class="value">$101.97</div>
+      <div class="change down alert">▲ +7% — 2026 HIGH</div>
     </div>
     <div class="market-card">
       <div class="label">Bitcoin</div>
       <div class="value">~$71,500</div>
-      <div class="change down">▼ –1.7% (24h)</div>
-    </div>
-    <div class="market-card">
-      <div class="label">Gold</div>
-      <div class="value">~$2,380</div>
-      <div class="change up">▲ Back-to-back gains</div>
-    </div>
-    <div class="market-card">
-      <div class="label">US Oil</div>
-      <div class="value">~$98–100</div>
-      <div class="change up">▲ Record exports + Iran</div>
+      <div class="change neutral">→ As of Apr 12 close</div>
     </div>
   </div>
 
@@ -233,29 +215,29 @@
   <div class="section-title"><span class="dot red"></span> Top Stories</div>
   <div class="card">
     <div class="story">
-      <div class="headline"><span class="tag breaking">BREAKING</span>Vance Returns Without Iran Deal — Ceasefire on Knife Edge</div>
-      <div class="summary">VP JD Vance returned to the US without a formal agreement to end the Iran war. Ceasefire is in effect but Iran has accused Israel/US of violating it with strikes in Lebanon. High-level talks continue in Islamabad — "make or break" per Pakistan's PM.</div>
-      <div class="source"><span>📺 CNBC</span><span>🕐 Apr 11, 2026</span></div>
+      <div class="headline"><span class="tag breaking">BREAKING</span>Trump Orders Strait of Hormuz Blockade — All Iranian Port Traffic Banned</div>
+      <div class="summary">The US Navy will blockade ALL ships entering or leaving Iranian ports, effective Monday 10am ET (~10pm SGT Mon Apr 13). The move follows the collapse of Iran peace talks in Islamabad where VP JD Vance left without a deal. Iran is demanding control of Hormuz, war reparations, and release of frozen assets. Trump is weighing limited military strikes on Iran (WSJ). ~20% of global oil passes through Hormuz — this is the largest peacetime oil supply disruption in history.</div>
+      <div class="source"><span>📺 CNBC</span><span>🕐 Apr 12, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline"><span class="tag breaking">MARKETS</span>S&P 500 Posts Best Week Since November on Iran Ceasefire</div>
-      <div class="summary">Markets rallied last week on the ceasefire deal. Cramer warned of "overconfident" markets given the fragile political situation and unresolved Strait of Hormuz blockade.</div>
-      <div class="source"><span>📺 CNBC</span><span>🕐 Apr 11, 2026</span></div>
+      <div class="headline"><span class="tag breaking">OIL</span>Oil Surges 7–8% — WTI $104.19, Brent $101.97 on Hormuz Blockade</div>
+      <div class="summary">Oil prices spiked sharply after the blockade announcement. Analysts are drawing comparisons to the 1997 Asian Financial Crisis oil shock, though note that strategic reserves may provide some buffer. Tanker traffic through Hormuz had already plunged. With US exports at a record 5.2M bbl/day, the blockade further constricts global supply.</div>
+      <div class="source"><span>📺 CNBC · 📊 Seeking Alpha</span><span>🕐 Apr 12, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline"><span class="tag analysis">ANALYSIS</span>US Oil Exports Hit Record 5.2M bbl/day — Strait of Hormuz Still Disrupted</div>
-      <div class="summary">With the Strait partially blocked, the US is exporting record oil. Trump demanded reopening of the Strait. Oil remains elevated above $98/barrel.</div>
-      <div class="source"><span>📊 Seeking Alpha</span><span>🕐 Apr 12, 2026</span></div>
+      <div class="headline"><span class="tag update">MARKETS</span>Ceasefire Rally Erasing — Futures Drop as Geopolitical Risk Returns</div>
+      <div class="summary">Last week's post-ceasefire rally (S&P +3.6%, Nasdaq +4.7%, Dow +3% — best week since November) is being unwound. Markets had rallied on ceasefire hopes but the Hormuz blockade and collapsed peace talks have reignited safe-haven selling. Cramer had warned the market was "overconfident."</div>
+      <div class="source"><span>📺 CNBC</span><span>🕐 Apr 12, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline"><span class="tag breaking">ALERT</span>Michael Burry Doubles Down — Buys JD.com, Alibaba, Nvidia Puts; Still Short Palantir</div>
-      <div class="summary">The Big Short investor disclosed new positions in JD.com, Alibaba, and additional Nvidia puts. He remains persistently short Palantir despite Trump's public praise. Palantir had its worst week in over a year.</div>
-      <div class="source"><span>📺 CNBC · 📊 SA</span><span>🕐 Apr 10, 2026</span></div>
+      <div class="headline"><span class="tag breaking">EARNINGS</span>Q1 Earnings Season Begins This Week — Banks Lead</div>
+      <div class="summary">Q1 2026 earnings kick off this week with Goldman Sachs (Monday), Citigroup, Wells Fargo, JPMorgan, Morgan Stanley, and Bank of America all reporting. Given the macro uncertainty from oil and geopolitics, bank earnings will be a key test of credit market health. Big tech winding down; semis and consumer discretionary also in focus.</div>
+      <div class="source"><span>📺 CNBC</span><span>🕐 Apr 12, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline"><span class="tag update">UPDATE</span>Anthropic Managed Agents Launch Hits CDN Players — Fastly, Cloudflare, Akamai Fall</div>
-      <div class="summary">CDN providers tumbled after Anthropic launched its Managed Agents platform, signaling potential shift in AI compute infrastructure consumption away from traditional CDN players.</div>
-      <div class="source"><span>📊 Seeking Alpha</span><span>🕐 Apr 11, 2026</span></div>
+      <div class="headline"><span class="tag analysis">GEOPOLITICS</span>Hungary's Orban Ousted After 16 Years — Pro-EU Peter Magyar Wins</div>
+      <div class="summary">In a landmark election result, Hungarian PM Viktor Orban — a Trump ally and nationalist outlier in the EU — has been defeated by pro-EU opposition leader Peter Magyar. The result strengthens the EU's position and could shift European policy on Ukraine, sanctions, and relations with the US.</div>
+      <div class="source"><span>📰 Straits Times</span><span>🕐 Apr 12, 2026</span></div>
     </div>
   </div>
 
@@ -267,20 +249,28 @@
       <div class="section-title"><span class="dot green"></span> Sector Watch</div>
       <div class="card">
         <div class="call-item">
+          <div class="icon">🛢️</div>
+          <div class="details"><div class="ticker">Energy Majors</div><div class="action up">OIL SURGE BENEFICIARIES</div><div class="note">XOM, CVX, COP likely up on WTI/Brent spike</div></div>
+        </div>
+        <div class="call-item">
           <div class="icon">📦</div>
-          <div class="details"><div class="ticker">COHR</div><div class="action up">COHERENT SURGES</div><div class="note">Advances in silicon carbide tech — analyst bullish</div></div>
+          <div class="details"><div class="ticker">COHR</div><div class="action up">COHERENT — SILICON CARBIDE</div><div class="note">Advances in SiC tech; analyst bullish</div></div>
         </div>
         <div class="call-item">
           <div class="icon">🏭</div>
-          <div class="details"><div class="ticker">APLD</div><div class="action up">APPLIED DIGITAL +CLARITY</div><div class="note">Post-earnings: accelerated path to $1B NOI target</div></div>
+          <div class="details"><div class="ticker">APLD</div><div class="action up">APPLIED DIGITAL — AI COMPUTE</div><div class="note">Accelerated path to $1B NOI target</div></div>
         </div>
         <div class="call-item">
           <div class="icon">🔋</div>
-          <div class="details"><div class="ticker">NBIS</div><div class="action up">NEBIUS: NEXT AI HYPERSCALER</div><div class="note">Emerging as viable AI infrastructure play</div></div>
+          <div class="details"><div class="ticker">NBIS</div><div class="action up">NEBIUS — NEXT AI HYPERSCALER</div><div class="note">Emerging as viable AI infrastructure play</div></div>
+        </div>
+        <div class="call-item">
+          <div class="icon">⚡</div>
+          <div class="details"><div class="ticker">TSLA</div><div class="action up">TESLA — UPGRADED</div><div class="note">Bye-bye → Buy-buy; momentum shifting</div></div>
         </div>
         <div class="call-item">
           <div class="icon">👟</div>
-          <div class="details"><div class="ticker">NKE</div><div class="action down">NIKE DROPS — "DAMNING" DOWNGRADE</div><div class="note">Cramer calls analyst call "damning"</div></div>
+          <div class="details"><div class="ticker">NKE</div><div class="action down">NIKE — "DAMNING" DOWNGRADE</div><div class="note">Cramer calls analyst call "damning"</div></div>
         </div>
         <div class="call-item">
           <div class="icon">☁️</div>
@@ -288,50 +278,42 @@
         </div>
         <div class="call-item">
           <div class="icon">💾</div>
-          <div class="details"><div class="ticker">SNDK</div><div class="action up">SANDISK RALLY BACKED</div><div class="note">Rally backed by something bigger</div></div>
-        </div>
-        <div class="call-item">
-          <div class="icon">📉</div>
-          <div class="details"><div class="ticker">PLTR</div><div class="action down">PALANTIR WORST WEEK IN 1+ YR</div><div class="note">Despite Trump praise — Iran war drag</div></div>
-        </div>
-        <div class="call-item">
-          <div class="icon">🧠</div>
-          <div class="details"><div class="ticker">INTC</div><div class="action up">INTEL: MOST OVERBOUGHT</div><div class="note">Leads overbought list after comeback rally</div></div>
-        </div>
-        <div class="call-item">
-          <div class="icon">⚡</div>
-          <div class="details"><div class="ticker">TSLA</div><div class="action up">TESLA UPGRADED: BYE-BYE → BUY-BUY</div><div class="note">Rating upgrade; momentum shifting</div></div>
+          <div class="details"><div class="ticker">SNDK</div><div class="action up">SANDISK RALLY</div><div class="note">Rally backed by something bigger</div></div>
         </div>
         <div class="call-item">
           <div class="icon">💳</div>
-          <div class="details"><div class="ticker">C</div><div class="action down">CITI DOWNGRADES 6 SOFTWARE STOCKS</div><div class="note">AI concerns intensifying — sector caution</div></div>
+          <div class="details"><div class="ticker">C</div><div class="action down">CITI DOWNGRADES 6 SOFTWARE STOCKS</div><div class="note">AI concerns — sector-wide caution</div></div>
+        </div>
+        <div class="call-item">
+          <div class="icon">🧠</div>
+          <div class="details"><div class="ticker">INTC</div><div class="action up">INTEL — MOST OVERBOUGHT</div><div class="note">Leads overbought list after rally</div></div>
         </div>
       </div>
     </div>
 
-    <!-- Macro + Social -->
+    <!-- Macro -->
     <div>
       <div class="section-title"><span class="dot yellow"></span> Macro & Fed Monitor</div>
       <div class="card">
         <div class="macro-item">
-          <div class="event">🏛 Powell & Bessent Summon Bank CEOs — Urgent Meeting</div>
-          <div class="desc">Fed and Treasury called an emergency meeting with major bank CEOs. Signals concern over credit market liquidity and private credit stress.</div>
+          <div class="event">🏛 Powell & Bessent Summon Bank CEOs — Emergency Meeting</div>
+          <div class="desc">Fed and Treasury called an urgent meeting with major bank CEOs. Signals concern over credit market liquidity and private credit stress. Markets will watch for any policy response.</div>
         </div>
         <div class="macro-item">
-          <div class="event">💰 Ceasefire Boosts Risk Sentiment — But Fragile</div>
-          <div class="desc">Markets rallied on ceasefire news but analysts warn geopolitical risk remains elevated. Strait of Hormuz still not fully reopened.</div>
-        </div>
-        <div class="macro-item">
-          <div class="event">📊 ~50% of Americans: Income Can't Keep Up With Prices</div>
-          <div class="desc">New polling shows half of households feel squeezed. Social Security COLA estimate for 2027 ticks higher with gas prices.</div>
+          <div class="event">🛢 Hormuz Blockade — Largest Oil Supply Disruption in History</div>
+          <div class="desc">~20% of global oil supplies pass through the Strait of Hormuz. With tanker traffic already plunging and the US now imposing a formal blockade, oil markets face the most significant supply disruption in modern peacetime history.</div>
         </div>
         <div class="macro-item">
           <div class="event">🏥 WHO Warns: Attacks Near Iranian Nuclear Sites</div>
-          <div class="desc">World Health Organization alarmed over health and environmental risks from attacks near Iran's nuclear facilities.</div>
+          <div class="desc">World Health Organization alarmed over health and environmental risks from attacks near Iran's nuclear facilities. Any nuclear incident would be a black swan event for regional and global markets.</div>
         </div>
         <div class="macro-item">
           <div class="event">🇪🇺 Europe Pharma Era Fading — Trump Biotech Tariffs</div>
-          <div class="desc">Trump's MFN tariffs on biotech shifts are ending Europe's pharma dominance era. European pharma stocks under pressure.</div>
+          <div class="desc">Trump's MFN tariffs on biotech shifts are ending Europe's pharma dominance era. European pharma stocks under pressure. Hungarian election result may further shift EU pharma policy.</div>
+        </div>
+        <div class="macro-item">
+          <div class="event">📊 ~50% of Americans: Income Can't Keep Up With Prices</div>
+          <div class="desc">New polling shows half of households feel squeezed. Social Security COLA estimate for 2027 rising with energy prices. Consumer sentiment risk if oil stays elevated.</div>
         </div>
       </div>
 
@@ -339,22 +321,22 @@
       <div class="card">
         <div class="social-item">
           <div class="platform">Reddit · r/wallstreetbets</div>
-          <div class="quote">"Burry is still shorting Palantir and Trump is publicly shilling it. Classic reverse-Catherine."</div>
-          <div class="attribution">@user97 · 18h ago</div>
+          <div class="quote">"Hormuz blockade + Iran war + no ceasefire = oil $100+. Energy plays the only trade here."</div>
+          <div class="attribution">@energy_trades · 2h ago</div>
         </div>
         <div class="social-item">
           <div class="platform">Reddit · r/investing</div>
-          <div class="quote">"Nvidia puts in this environment? Burry is either early or insane. History says early."</div>
-          <div class="attribution">@value_hunter · 22h ago</div>
+          <div class="quote">"Last week's rally was a dead cat bounce. Geopolitical risk is back with a vengeance."</div>
+          <div class="attribution">@bear_case_only · 4h ago</div>
         </div>
         <div class="social-item">
-          <div class="platform">Seeking Alpha Poll</div>
-          <div class="quote">"Which AI company has the most viable business plan?" — Anthropic and OpenAI leading but investors skeptical of monetization.</div>
-          <div class="attribution">SA Asks · Apr 11, 2026</div>
+          <div class="platform">Reddit · r/finance</div>
+          <div class="quote">"Singapore Q1 investment banking fees at 3-year high — even with all this chaos. Strong capital markets activity."</div>
+          <div class="attribution">@asia_macro · 6h ago</div>
         </div>
         <div class="social-item">
           <div class="platform">CNBC · Cramer</div>
-          <div class="quote">"This market is getting ahead of itself. A two-week ceasefire isn't peace. Watch oil, watch bonds."</div>
+          <div class="quote">"This market was getting ahead of itself. A two-week ceasefire isn't peace. Watch oil, watch bonds, watch the banks this week."</div>
           <div class="attribution">Jim Cramer · Apr 10, 2026</div>
         </div>
       </div>
@@ -366,42 +348,37 @@
   <div class="section-title" style="margin-top:4px;"><span class="dot orange"></span> Singapore Market Watch</div>
   <div class="card">
     <div class="story">
+      <div class="headline"><span class="tag breaking">SGX</span>Oil Surge Rattles Asia — STI Set for Lower Open Amid Hormuz Blockade</div>
+      <div class="summary">Singapore markets face pressure as oil surges following the Hormuz blockade. STI ended last week at 4,989.41 (+0.3% Friday). Analysts compare the current oil shock to the 1997 Asian Financial Crisis but note that Singapore's reserves and trade diversification provide more buffer this time. Business electricity prices up 26% since the Iran war began.</div>
+      <div class="source"><span>📰 Straits Times</span><span>🕐 Apr 13, 2026</span></div>
+    </div>
+    <div class="story">
       <div class="headline"><span class="tag analysis">SGX</span>SGX Daily Avg Turnover at 18-Year High — Best Since Oct 2007</div>
-      <div class="summary">Singapore Exchange saw its daily average turnover value for shares in March hit its highest level since October 2007, driven by regional volatility and safe-haven inflows amid the Iran conflict.</div>
+      <div class="summary">Singapore Exchange saw its daily average turnover value for shares in March hit its highest level since October 2007, driven by regional volatility and safe-haven inflows amid the Iran conflict. DBS raised SGX target to S$22.50 (Buy).</div>
       <div class="source"><span>📰 The Edge Singapore</span><span>🕐 Apr 12, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline"><span class="tag analysis">SGX</span>DBS Raises SGX Target to S$22.50 — Maintains "Buy" Call</div>
-      <div class="summary">DBS Group Research raised its 12-month target price for Singapore Exchange to S$22.50, citing structural shifts in Singapore's bourse and safe-haven inflows linked to de-dollarization trends.</div>
-      <div class="source"><span>📰 The Edge Singapore</span><span>🕐 Apr 12, 2026</span></div>
-    </div>
-    <div class="story">
-      <div class="headline"><span class="tag breaking">MARKETS</span>STI Ends Week Higher — 0.3% Gain as Investors Digest Ceasefire</div>
-      <div class="summary">The Straits Times Index (STI) rose 0.3% to 4,989.41 on Friday, ending the week higher. Investors remained cautious amid mixed global signals and interest rate uncertainties — trading was choppy and range-bound.</div>
-      <div class="source"><span>📰 The Straits Times</span><span>🕐 Apr 11, 2026</span></div>
-    </div>
-    <div class="story">
-      <div class="headline"><span class="tag analysis">ENERGY</span>Business Electricity Prices Climb 26% Since Iran War Began</div>
-      <div class="summary">Singapore businesses facing mounting electricity cost pressures — a 12-month fixed-price plan for SMEs now at S$0.32/kWh, up 26% from pre-conflict levels. Regulated tariffs also rose as natural gas prices elevated. Supply constraints tied to Middle East tensions.</div>
+      <div class="headline"><span class="tag breaking">ENERGY</span>Business Electricity Prices Up 26% Since Iran War Began</div>
+      <div class="summary">Singapore SMEs facing mounting energy cost pressures — a 12-month fixed electricity price plan now at S$0.32/kWh, up 26% from pre-conflict levels. Regulated tariffs also rising. Singapore government has flagged energy supply risks and unveiled a S$1 billion support package.</div>
       <div class="source"><span>📰 Business Times Singapore</span><span>🕐 Apr 12, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline"><span class="tag analysis">INFRASTRUCTURE</span>Greater Southern Waterfront: 213 Hectares of Land to Be Reclaimed</div>
-      <div class="summary">URA proceeding with plans to reclaim ~213 hectares (half the size of Marina Bay) at Keppel and Tanjong Pagar terminals after their relocation to Tuas around 2027. The Greater Southern Waterfront precinct will take at least 10 years to complete.</div>
-      <div class="source"><span>📰 The Straits Times</span><span>🕐 Apr 12, 2026</span></div>
-    </div>
-    <div class="story">
-      <div class="headline"><span class="tag update">CORPORATE</span>Olam CEO Sunny Verghese to Step Down — Major Leadership Reshuffle</div>
-      <div class="summary">Sunny Verghese, veteran CEO of Singapore-listed Olam Group, is slated to step down as part of a major management reshuffle. CDL and SGX were also flagged as stocks to watch for Friday developments.</div>
-      <div class="source"><span>📰 The Straits Times</span><span>🕐 Apr 12, 2026</span></div>
-    </div>
-    <div class="story">
       <div class="headline"><span class="tag analysis">GOVT</span>Singapore Unveils S$1 Billion Support Package — Flags Energy Supply Risks</div>
-      <div class="summary">Singapore government unveiled S$1 billion in support measures while flagging energy supply risks from the Middle East conflict. Regional growth forecast cut to 5.1% for 2026-2027 as conflict weighs on developing Asia.</div>
+      <div class="summary">Singapore government unveiled S$1 billion in support measures while flagging energy supply risks from the Middle East conflict. Regional growth forecast cut to 5.1% for 2026-2027 as conflict weighs on developing Asia. Monitor for additional fiscal measures if oil stays elevated.</div>
       <div class="source"><span>📰 The Edge Singapore</span><span>🕐 Apr 12, 2026</span></div>
     </div>
     <div class="story">
-      <div class="headline"><span class="tag update">ECONOMY</span>Singapore Q1 Investment Banking Fees at 3-Year High — US$187.8M</div>
+      <div class="headline"><span class="tag update">CORPORATE</span>Olam CEO Sunny Verghese to Step Down — Major Leadership Reshuffle</div>
+      <div class="summary">Veteran Olam Group CEO Sunny Verghese is slated to step down as part of a major management reshuffle. CDL and SGX were also flagged as stocks to watch given recent developments.</div>
+      <div class="source"><span>📰 The Straits Times</span><span>🕐 Apr 12, 2026</span></div>
+    </div>
+    <div class="story">
+      <div class="headline"><span class="tag analysis">INFRASTRUCTURE</span>Greater Southern Waterfront: 213 Hectares of Land Reclamation Planned</div>
+      <div class="summary">URA proceeding with plans to reclaim ~213 hectares (half the size of Marina Bay) at Keppel and Tanjong Pagar terminals after relocation to Tuas ~2027. The Greater Southern Waterfront precinct will take at least 10 years to complete — long-term infrastructure play.</div>
+      <div class="source"><span>📰 The Straits Times</span><span>🕐 Apr 12, 2026</span></div>
+    </div>
+    <div class="story">
+      <div class="headline"><span class="tag analysis">ECONOMY</span>Singapore Q1 Investment Banking Fees at 3-Year High — US$187.8M</div>
       <div class="summary">Singapore's Q1 2026 investment banking fees reached a three-year high of US$187.8 million, signaling strong capital markets activity despite geopolitical headwinds.</div>
       <div class="source"><span>📰 Business Times Singapore</span><span>🕐 Apr 12, 2026</span></div>
     </div>
@@ -413,11 +390,11 @@
     <div class="earnings-grid">
       <div>
         <div class="gk">📋 Key Reports This Week</div>
-        <div class="gv">Major banks (JPM, WFC) · Big tech winding down · Semis (Marvell cited) · Consumer discretionary</div>
+        <div class="gv">Mon: Goldman Sachs · Tue–Thu: Citigroup, Wells Fargo, JPMorgan, Morgan Stanley, Bank of America · Consumer discretionary, semis also reporting</div>
       </div>
       <div>
-        <div class="gk">📊 Analyst Expectation Signals</div>
-        <div class="gv">Earnings season could bring good news · Fixed income seeking yield amid geopolitical risk · Credit markets watching private credit ETF stress</div>
+        <div class="gk">📊 Key Things to Watch</div>
+        <div class="gv">Credit quality & loan loss reserves · Net interest margin guidance · Iran/geopolitical risk exposure · Private credit stress signals · Capital markets fees (SGX context)</div>
       </div>
     </div>
   </div>
@@ -425,7 +402,7 @@
 </div>
 
 <div class="footer">
-  FinanceNews Dashboard · Auto-updated daily at 08:00 SGT · Sources: CNBC, Yahoo Finance, Seeking Alpha, Reddit r/finance, r/investing, r/stocks, r/wallstreetbets<br>
+  FinanceNews Dashboard · Updated Apr 13, 2026 00:00 UTC · Sources: CNBC, Yahoo Finance, Straits Times, Business Times, The Edge Singapore, Seeking Alpha<br>
   Not financial advice · For informational purposes only
 </div>
 
