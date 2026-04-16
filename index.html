@@ -1,466 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinanceNews Dashboard — 2026-04-15</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: #0a0f1e;
-            color: #e5e7eb;
-            line-height: 1.5;
-            min-height: 100vh;
-        }
-        .header {
-            background: #111827;
-            border-bottom: 1px solid #1f2937;
-            padding: 20px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .header-title { font-size: 22px; font-weight: 700; color: #fff; }
-        .header-title span { color: #22c55e; }
-        .header-meta { font-size: 13px; color: #9ca3af; text-align: right; }
-        .header-meta strong { color: #f59e0b; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinanceNews — 16 Apr 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --green: #3fb950;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --gold: #d4a574;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px 20px 40px; }
+  header { padding: 32px 40px 24px; border-bottom: 1px solid var(--border); }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .logo { font-size: 22px; font-weight: 700; color: var(--text); }
+  .logo span { color: var(--green); }
+  .badge { background: var(--green); color: #000; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+  .tagline { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .timestamp { font-size: 12px; color: var(--muted); text-align: right; }
 
-        .updated-banner {
-            background: linear-gradient(135deg, #1e3a5f, #0f2744);
-            border: 1px solid #1d4ed8;
-            border-radius: 10px;
-            padding: 14px 24px;
-            margin-bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .updated-banner span { font-size: 15px; color: #93c5fd; }
-        .updated-banner span strong { color: #fff; }
+  .market-bar { display: flex; gap: 24px; padding: 16px 40px; background: var(--card); border-bottom: 1px solid var(--border); overflow-x: auto; flex-wrap: wrap; }
+  .market-item { display: flex; flex-direction: column; gap: 2px; }
+  .market-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .market-value { font-size: 15px; font-weight: 600; }
+  .up { color: var(--green); }
+  .dn { color: var(--red); }
+  .flat { color: var(--muted); }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 40px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+  .col-main { display: flex; flex-direction: column; gap: 20px; }
 
-        .card {
-            background: #111827;
-            border-radius: 12px;
-            border: 1px solid #1f2937;
-            overflow: hidden;
-        }
-        .card-header {
-            background: #0f172a;
-            padding: 14px 20px;
-            border-bottom: 1px solid #1f2937;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: #9ca3af;
-        }
-        .card-body { padding: 18px 20px; }
+  .section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .card-sm { padding: 14px 16px; }
 
-        .index-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        .index-table th { text-align: left; padding: 6px 0; color: #6b7280; font-weight: 500; font-size: 12px; border-bottom: 1px solid #1f2937; }
-        .index-table td { padding: 9px 0; border-bottom: 1px solid #1f2937; }
-        .index-table tr:last-child td { border-bottom: none; }
-        .index-name { font-weight: 500; color: #d1d5db; }
-        .positive { color: #22c55e; font-weight: 600; }
-        .negative { color: #ef4444; font-weight: 600; }
-        .index-value { color: #9ca3af; font-size: 13px; }
+  .story { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .story:last-child { border-bottom: none; padding-bottom: 0; }
+  .story:first-child { padding-top: 0; }
+  .story-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--blue); margin-bottom: 4px; }
+  .story-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .story-body { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .story-meta { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
-        .story-item {
-            padding: 12px 0;
-            border-bottom: 1px solid #1f2937;
-        }
-        .story-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .story-item:first-child { padding-top: 0; }
-        .story-title { font-size: 14px; font-weight: 600; color: #e5e7eb; margin-bottom: 4px; line-height: 1.4; }
-        .story-desc { font-size: 13px; color: #9ca3af; line-height: 1.5; }
-        .story-meta { font-size: 11px; color: #6b7280; margin-top: 4px; }
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-right: 4px;
-        }
-        .tag-bull { background: rgba(34,197,94,0.15); color: #22c55e; }
-        .tag-bear { background: rgba(239,68,68,0.15); color: #ef4444; }
-        .tag-macro { background: rgba(59,130,246,0.15); color: #60a5fa; }
-        .tag-sg { background: rgba(245,158,11,0.15); color: #f59e0b; }
-        .tag-ai { background: rgba(168,85,247,0.15); color: #a78bfa; }
+  .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sector-item { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px; }
+  .sector-name { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .sector-change { font-size: 15px; font-weight: 600; }
 
-        .watch-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .watch-table th { text-align: left; padding: 6px 8px; color: #6b7280; font-weight: 500; font-size: 11px; border-bottom: 1px solid #1f2937; }
-        .watch-table td { padding: 8px 8px; border-bottom: 1px solid #1f2937; vertical-align: top; }
-        .watch-table tr:last-child td { border-bottom: none; }
-        .broker-name { font-weight: 600; color: #d1d5db; }
-        .action-buy { color: #22c55e; font-weight: 600; }
-        .action-down { color: #ef4444; font-weight: 600; }
+  .macro-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .macro-item:last-child { border-bottom: none; }
+  .macro-label { font-size: 13px; color: var(--text); }
+  .macro-value { font-size: 13px; font-weight: 600; }
 
-        .sentiment-bar {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 6px 0;
-        }
-        .sentiment-label { font-size: 13px; color: #9ca3af; width: 80px; }
-        .bar-track { flex: 1; height: 8px; background: #1f2937; border-radius: 4px; overflow: hidden; }
-        .bar-fill-bull { height: 100%; background: #22c55e; border-radius: 4px; }
-        .bar-fill-bear { height: 100%; background: #ef4444; border-radius: 4px; }
-        .sentiment-pct { font-size: 13px; font-weight: 600; width: 40px; text-align: right; }
+  .col-side { display: flex; flex-direction: column; gap: 20px; }
 
-        .sources { font-size: 11px; color: #6b7280; margin-top: 8px; line-height: 1.6; }
-        .sources span { color: #9ca3af; }
+  .sentiment-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sentiment-item:last-child { border-bottom: none; }
+  .sentiment-name { color: var(--text); }
+  .sentiment-tag { font-size: 10px; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+  .tag-hot { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-warm { background: rgba(212,165,116,0.15); color: var(--gold); }
+  .tag-cool { background: rgba(88,166,255,0.15); color: var(--blue); }
 
-        @media (max-width: 640px) {
-            .header { padding: 16px; }
-            .header-title { font-size: 18px; }
-            .header-meta { text-align: left; }
-            .container { padding: 16px 12px 32px; }
-        }
-    </style>
+  .sg-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .sg-item:last-child { border-bottom: none; }
+  .sg-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+  .sg-meta { font-size: 11px; color: var(--muted); }
+
+  footer { text-align: center; padding: 24px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--border); margin-top: 32px; }
+
+  @media (max-width: 900px) {
+    main { grid-template-columns: 1fr; padding: 16px 20px; }
+    header { padding: 20px; }
+    .market-bar { padding: 12px 20px; }
+    .col-side { order: -1; }
+  }
+</style>
 </head>
 <body>
 
-<div class="header">
-    <div class="header-title">📈 <span>FinanceNews</span> Dashboard</div>
-    <div class="header-meta">
-        <div>Last updated: <strong>2026-04-15 00:03 UTC</strong></div>
-        <div style="margin-top:2px; color:#6b7280; font-size:11px;">Auto-updated daily by Rocky</div>
+<header>
+  <div class="header-top">
+    <div>
+      <div class="logo">📈 Finance<strong>News</strong><span class="badge">LIVE</span></div>
+      <div class="tagline">Investment intelligence dashboard — your edge in the markets</div>
     </div>
+    <div class="timestamp">
+      Thu, 16 Apr 2026 · 00:00 UTC<br>
+      <span style="color:var(--muted)">SGT Thu, 16 Apr 2026 · 08:00</span>
+    </div>
+  </div>
+</header>
+
+<div class="market-bar">
+  <div class="market-item">
+    <span class="market-label">S&P 500</span>
+    <span class="market-value up">7,022.95 ▲ +0.8%</span>
+  </div>
+  <div class="market-item">
+    <span class="market-label">Nasdaq</span>
+    <span class="market-value up">24,016.02 ▲ +1.6%</span>
+  </div>
+  <div class="market-item">
+    <span class="market-label">Dow</span>
+    <span class="market-value dn">48,463.72 ▼ -0.15%</span>
+  </div>
+  <div class="market-item">
+    <span class="market-label">VIX</span>
+    <span class="market-value flat">~14.5 (low)</span>
+  </div>
+  <div class="market-item">
+    <span class="market-label">Nikkei 225</span>
+    <span class="market-value up">+0.4%</span>
+  </div>
+  <div class="market-item">
+    <span class="market-label">Hang Seng</span>
+    <span class="market-value up">+0.3%</span>
+  </div>
+  <div class="market-item">
+    <span class="market-label">Kospi</span>
+    <span class="market-value up">+2.1%</span>
+  </div>
+  <div class="market-item">
+    <span class="market-label">STI</span>
+    <span class="market-value up">5,021.20 ▲ +0.3%</span>
+  </div>
 </div>
 
-<div class="container">
+<main>
+  <div class="col-main">
 
-    <div class="updated-banner">
-        <span>📊 Market data for <strong>April 14–15, 2026</strong> · Asia-Pacific &amp; US close</span>
-        <span style="color:#86efac; font-size:13px;">🟢 Risk-on sentiment · US-Iran ceasefire hopes</span>
+    <!-- Top Stories -->
+    <div class="card card-sm">
+      <div class="section-title">🔥 Top Stories</div>
+
+      <div class="story">
+        <div class="story-label">Markets · Record Highs</div>
+        <div class="story-title">S&P 500 & Nasdaq Hit Record Closes on Middle East Peace Hopes + Strong Earnings</div>
+        <div class="story-body">The S&P 500 closed at a record 7,022.95 (+0.8%) and Nasdaq at 24,016.02 (+1.6%) on April 15 — the Nasdaq's first record finish since Oct 29. An 11-session winning streak for Nasdaq is the longest since Nov 2021. Optimism around US-Iran ceasefire talks combined with better-than-expected Q1 earnings (Morgan Stanley +4.5%, Bank of America +1.8%) drove the rally. Software & services led, up 4.3%.</div>
+        <div class="story-meta">Sources: Reuters, CNBC · 15 Apr 2026</div>
+      </div>
+
+      <div class="story">
+        <div class="story-label">Semiconductors · AI Infrastructure</div>
+        <div class="story-title">Broadcom +4.2%: Meta Extends Custom AI Chips Deal</div>
+        <div class="story-body">Broadcom advanced after Meta Platforms extended its custom AI chip partnership with Broadcom — reinforcing the custom silicon trend and Broadcom's role in hyperscaler AI infrastructure buildout. Quantum computing stocks also rallied sharply (Rigetti +13%, D-Wave +22.6%, Arqit +16%).</div>
+        <div class="story-meta">Source: Reuters · 15 Apr 2026</div>
+      </div>
+
+      <div class="story">
+        <div class="story-label">Macro · Fed Watch</div>
+        <div class="story-title">Fed's Hammack: Cuts OR Hikes Both Possible</div>
+        <div class="story-body">Cleveland Fed president Beth Hammack said the central bank could cut OR hike rates depending on data — a notably balanced stance given recent inflation concerns tied to Middle East oil disruption. Markets are currently pricing a ~70% probability of a cut by year-end. White House also signaled ongoing productive discussions with Iran on a second round of talks.</div>
+        <div class="story-meta">Source: Reuters · 15 Apr 2026</div>
+      </div>
+
+      <div class="story">
+        <div class="story-label">Banks · Earnings Beat</div>
+        <div class="story-title">Morgan Stanley (+4.5%) & Bank of America (+1.8%) Jump on Profit Beats</div>
+        <div class="story-body">Both banks reported stronger-than-expected Q1 results. Morgan Stanley saw a jump in quarterly profit driven by wealth management and trading strength. Bank of America grew profit. The financial sector helped offset materials (-1.3%) and industrials (-1.24%) weakness.</div>
+        <div class="story-meta">Source: Reuters · 15 Apr 2026</div>
+      </div>
+
+      <div class="story">
+        <div class="story-label">Geopolitics · US-Iran</div>
+        <div class="story-title">US Targets Iran's Oil Infrastructure With New Sanctions</div>
+        <div class="story-body">The US Treasury sanctioned 24+ individuals, companies and vessels in Iran's oil transportation network — even as talks of a potential ceasefire continue. Oil markets remain elevated vs pre-war levels, keeping inflation risk alive. Markets are pricing upside resolution while accepting that a complete resolution is still uncertain.</div>
+        <div class="story-meta">Source: Reuters · 15 Apr 2026</div>
+      </div>
     </div>
 
-    <div class="grid">
-
-        <!-- MARKETS OVERVIEW -->
-        <div class="card" style="grid-column: span 2;">
-            <div class="card-header">🌍 Markets Overview</div>
-            <div class="card-body">
-                <table class="index-table">
-                    <thead>
-                        <tr>
-                            <th>Index</th>
-                            <th>Close</th>
-                            <th>Change</th>
-                            <th>%</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="index-name">S&amp;P 500</td>
-                            <td class="index-value">6,967.38</td>
-                            <td class="positive">+77.48</td>
-                            <td class="positive">+1.18%</td>
-                        </tr>
-                        <tr>
-                            <td class="index-name">Dow Jones</td>
-                            <td class="index-value">48,535.99</td>
-                            <td class="positive">+317.74</td>
-                            <td class="positive">+0.66%</td>
-                        </tr>
-                        <tr>
-                            <td class="index-name">Nasdaq Composite</td>
-                            <td class="index-value">23,639.08</td>
-                            <td class="positive">+454.38</td>
-                            <td class="positive">+1.96%</td>
-                        </tr>
-                        <tr>
-                            <td class="index-name">Nikkei 225 (Japan)</td>
-                            <td class="index-value">57,877.39</td>
-                            <td class="positive">+1,372.49</td>
-                            <td class="positive">+2.43%</td>
-                        </tr>
-                        <tr>
-                            <td class="index-name">KOSPI (South Korea)</td>
-                            <td class="index-value">6,004.30</td>
-                            <td class="positive">+197.14</td>
-                            <td class="positive">+3.40%</td>
-                        </tr>
-                        <tr>
-                            <td class="index-name">Hang Seng (HK)</td>
-                            <td class="index-value">25,759.75</td>
-                            <td class="positive">+102.84</td>
-                            <td class="positive">+0.40%</td>
-                        </tr>
-                        <tr>
-                            <td class="index-name">ASX 200 (Australia)</td>
-                            <td class="index-value">8,970.8</td>
-                            <td class="positive">+44.85</td>
-                            <td class="positive">+0.50%</td>
-                        </tr>
-                        <tr>
-                            <td class="index-name">Shanghai Composite</td>
-                            <td class="index-value">4,010.45</td>
-                            <td class="positive">+24.06</td>
-                            <td class="positive">+0.60%</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="sources">
-                    Sources: <span>CNBC, Trading Economics, IC Markets, The Hindu BusinessLine</span> · Data as of Apr 14 close
-                </div>
-            </div>
+    <!-- Sector Watch -->
+    <div class="card card-sm">
+      <div class="section-title">📊 Sector Watch</div>
+      <div class="sector-grid">
+        <div class="sector-item">
+          <div class="sector-name">S&P Tech</div>
+          <div class="sector-change up">▲ +2.08%</div>
         </div>
-
-        <!-- TOP STORIES -->
-        <div class="card" style="grid-column: span 2;">
-            <div class="card-header">🔥 Top Stories</div>
-            <div class="card-body">
-                <div class="story-item">
-                    <div class="story-title">🗞️ US-Iran Ceasefire Hopes Spark Global Risk-On Rally</div>
-                    <div class="story-desc">Stocks posted back-to-back gains as traders shrugged off a breakdown in US-Iran peace talks, remaining optimistic a deal between Washington and Tehran is still possible. The S&amp;P 500 gained 1.18% and the Nasdaq surged 1.96%. Asia-Pacific markets followed suit, with Japan's Nikkei jumping 2.43% to a six-week high and Korea's KOSPI surging 3.4%.</div>
-                    <div class="story-meta"><span class="tag tag-bull">Bullish</span> <span class="tag tag-macro">Macro</span> CNBCEuro/APAC close · Apr 14</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">🗞️ Asia AI-Linked Equities Lead Regional Gains</div>
-                    <div class="story-desc">Renewed enthusiasm for artificial intelligence drove gains across South Korea, Japan, and Taiwan. AI-linked stocks outperformed in the region, supporting broader market sentiment alongside the geopolitical de-escalation trade.</div>
-                    <div class="story-meta"><span class="tag tag-ai">AI</span> <span class="tag tag-bull">Tech</span> Trading Economics · Apr 14</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">🗞️ China Export Data Misses Estimates Amid Tariff Pressure</div>
-                    <div class="story-desc">Mainland China's CSI300 moved higher despite export data missing estimates, suggesting investor focus remains on domestic stimulus and the US trade negotiation trajectory rather than soft external demand.</div>
-                    <div class="story-meta"><span class="tag tag-bear">Bearish</span> <span class="tag tag-macro">China</span> CNBC · Apr 14</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">🗞️ Fed Holds Rates at 3.50–3.75%, One Cut Priced In for 2026</div>
-                    <div class="story-desc">The Federal Reserve kept its benchmark rate unchanged at 3.50%–3.75% in March amid heightened inflation uncertainty. The median projection calls for one rate cut in 2026, with PCE and core PCE inflation revised up to 2.7% each — above the 2% target. War risks in the Middle East remain a key policy consideration.</div>
-                    <div class="story-meta"><span class="tag tag-macro">Macro</span> <span class="tag tag-bear">Fed</span> Reuters / Federal Reserve · Apr 8–18</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">🗞️ Oil Prices Decline on Renewed US-Iran Talks Optimism</div>
-                    <div class="story-desc">Crude oil prices slipped as markets priced in the possibility of a US-Iran de-escalation, which could ease the global oil shock triggered by the Iran conflict. Lower fuel costs are expected to benefit transportation, aviation, and energy-intensive sectors in Asia.</div>
-                    <div class="story-meta"><span class="tag tag-macro">Commodities</span> <span class="tag tag-bull">Positive for transport</span> IC Markets · Apr 14</div>
-                </div>
-            </div>
+        <div class="sector-item">
+          <div class="sector-name">S&P Software & Services</div>
+          <div class="sector-change up">▲ +4.3%</div>
         </div>
-
-        <!-- SECTOR WATCH -->
-        <div class="card">
-            <div class="card-header">🏭 Sector Watch</div>
-            <div class="card-body">
-                <div class="story-item">
-                    <div class="story-title" style="color:#22c55e;">▲ Tech &amp; AI</div>
-                    <div class="story-desc">AI-linked equities in South Korea, Japan, and Taiwan leading gains. Oracle extended its rally on cloud/AI demand. Semiconductor upcycle thesis remains intact for UMS, AEM, Frencken.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title" style="color:#22c55e;">▲ REITs &amp; Property</div>
-                    <div class="story-desc">Singapore REITs and property names rallying on US-Iran ceasefire — lower oil means lower inflation expectations, a tailwind for rate-sensitive property. DBS picks: UOL, CityDev, CICT, MLT, Suntec REIT.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title" style="color:#ef4444;">▼ Energy / Oil</div>
-                    <div class="story-desc">Oil prices declining on ceasefire hopes — a direct reversal of the Iran-war risk premium that spiked in prior weeks. Energy sector facing headwinds from lower crude.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title" style="color:#22c55e;">▲ Transportation</div>
-                    <div class="story-desc">SATS and SIA benefit from lower fuel costs. SATS is DBS's preferred transportation pick. Safe-haven flows supporting OCBC among banks.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title" style="color:#22c55e;">▲ Agri-Commodities</div>
-                    <div class="story-desc">Wilmar, First Resources, Bumitama Agri seeing positive spillover from oil price movements. Softening fuel costs ease input costs for agricultural processors.</div>
-                </div>
-                <div class="sources">Source: DBS Insights, CNBC · Apr 8–14</div>
-            </div>
+        <div class="sector-item">
+          <div class="sector-name">S&P Financials</div>
+          <div class="sector-change up">▲ +0.8%</div>
         </div>
-
-        <!-- MACRO & FED MONITOR -->
-        <div class="card">
-            <div class="card-header">🏛️ Macro &amp; Fed Monitor</div>
-            <div class="card-body">
-                <div class="story-item">
-                    <div class="story-title">Fed Funds Rate</div>
-                    <div class="story-desc"><span class="positive">3.50%–3.75%</span> · Held at March 2026 FOMC meeting. War risks cited as key uncertainty for economic outlook.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">2026 Inflation Forecasts (Fed)</div>
-                    <div class="story-desc">PCE and Core PCE both revised up to <span class="negative">2.7%</span> (from 2.4% / 2.5% in Dec 2025 projections) — inflation remains above the 2% target.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">Rate Cut Outlook</div>
-                    <div class="story-desc">Median Fed projection: <span class="positive">one cut in 2026</span>. Market pricing also centers on one cut, with room for a second if inflation cooperates.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">Middle East / Geopolitics</div>
-                    <div class="story-desc">US-Iran ceasefire talks remain in focus. Breakdown in direct negotiations but deal still possible per traders. Tankers reportedly avoiding Strait of Hormuz amid US blockade.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">US-Iran Ceasefire (2-week)</div>
-                    <div class="story-desc">US and Iran agreed to a two-week ceasefire. Sparked "de-escalation trade" globally — lower oil, risk-on equities, compression of geopolitical risk premium.</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">Cleveland Fed Inflation Nowcast</div>
-                    <div class="story-desc">Daily nowcasts for PCE and CPI available from Cleveland Fed. Monitoring tool for tracking inflation trajectory vs Fed 2% target.</div>
-                </div>
-                <div class="sources">Sources: Federal Reserve, Reuters, Trading Economics · Mar–Apr 2026</div>
-            </div>
+        <div class="sector-item">
+          <div class="sector-name">S&P Materials</div>
+          <div class="sector-change dn">▼ -1.3%</div>
         </div>
-
-        <!-- SINGAPORE MARKET WATCH -->
-        <div class="card" style="grid-column: span 2;">
-            <div class="card-header">🇸🇬 Singapore Market Watch</div>
-            <div class="card-body">
-                <div class="story-item">
-                    <div class="story-title">🏦 JP Morgan Broker Notes</div>
-                    <div class="story-desc"><span class="action-down">OCBC: Downgrade</span> · <span class="negative">DBS: Lower price target</span> · <span class="action-buy">SGX: Raised price target</span>. Mixed signals for Singapore financials.</div>
-                    <div class="story-meta"><span class="tag tag-sg">Singapore</span> The Edge Singapore · Apr 14</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">📋 SGX Mainboard Upgrade — In-Principal Approval</div>
-                    <div class="story-desc">Singapore Exchange (SGX) has received in-principal approval for a Mainboard upgrade with public float to be increased to ≥25%. Forward P/E: 11.4x, P/B: 8.1x. Earnings forecasts raised 34–36% for FY26F/27F.</div>
-                    <div class="story-meta"><span class="tag tag-sg">Singapore</span> <span class="tag tag-bull">Bullish</span> Lim &amp; Tan Securities · Apr 14</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">🏗️ Lum Chang Creations (LCC) — BUY · TP S$1.04</div>
-                    <div class="story-desc">Strong 1HFY26: Revenue +31% YoY to S$53.5M, net profit +104% YoY. Gross profit +108%. Interim dividend 2.5 Scts (5.7% annualized yield). Order book S$132M. ROE &gt;50%. Added to MSCI Global Micro Cap Indexes. Target raised from S$0.70.</div>
-                    <div class="story-meta"><span class="tag tag-sg">Singapore</span> <span class="tag tag-bull">Top Pick</span> Lim &amp; Tan Securities · Apr 14</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">🔧 Kingsmen Creatives — BUY</div>
-                    <div class="story-desc">FY2025 net profit +76% to S$13.7M (core profit). Expected +16% growth in FY2026 to S$15.9M. Order book S$151M (S$127M to be recognized in 2026). Forward PE 7.5x, EV/EBITDA 2x, &gt;5% dividend yield. Insider buying and share buybacks signal undervaluation.</div>
-                    <div class="story-meta"><span class="tag tag-sg">Singapore</span> <span class="tag tag-bull">BUY</span> Lim &amp; Tan Securities · Apr 14</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">🚀 Singapore Small/Mid-Cap Reforms — Watershed Moment</div>
-                    <div class="story-desc">OCBC Group Research sees a "watershed moment" for Singapore SMID equities driven by equity market reforms and strategic value-unlocking. New actionable ideas emerging from ongoing corporate governance enhancements.</div>
-                    <div class="story-meta"><span class="tag tag-sg">Singapore</span> <span class="tag tag-bull">Structural</span> OCBC Group Research · Apr 10</div>
-                </div>
-                <div class="story-item">
-                    <div class="story-title">📊 DBS De-Escalation Trade Picks for SG</div>
-                    <div class="story-desc"><strong>REITs/Property:</strong> UOL, CityDev, CICT, MLT, Suntec REIT, CAREIT. <strong>Banks:</strong> OCBC (safe-haven flows). <strong>Transport:</strong> SATS (preferred), SIA. <strong>Agri:</strong> Wilmar, First Resources, Bumitama Agri. <strong>Tech:</strong> UMS, AEM, Frencken (AI/semi upcycle). <strong>Utilities:</strong> Sembcorp Industries.</div>
-                    <div class="story-meta"><span class="tag tag-sg">Singapore</span> <span class="tag tag-bull">Broker Picks</span> DBS Group Research · Apr 8</div>
-                </div>
-                <div class="sources">Sources: Business Times, The Edge Singapore, Minichart, Lim &amp; Tan Securities, OCBC/ DBS Group Research · Apr 14–15</div>
-            </div>
+        <div class="sector-item">
+          <div class="sector-name">S&P Industrials</div>
+          <div class="sector-change dn">▼ -1.24%</div>
         </div>
-
-        <!-- SOCIAL SENTIMENT -->
-        <div class="card">
-            <div class="card-header">💬 Social Sentiment</div>
-            <div class="card-body">
-                <div style="font-size:13px; color:#9ca3af; margin-bottom:14px;">
-                    Approximate market mood based on today's news flow. All major signals point to a <strong style="color:#22c55e;">risk-on / bullish</strong> session.
-                </div>
-                <div class="sentiment-bar">
-                    <div class="sentiment-label">Bullish</div>
-                    <div class="bar-track"><div class="bar-fill-bull" style="width:72%;"></div></div>
-                    <div class="sentiment-pct" style="color:#22c55e;">72%</div>
-                </div>
-                <div class="sentiment-bar">
-                    <div class="sentiment-label">Bearish</div>
-                    <div class="bar-track"><div class="bar-fill-bear" style="width:18%;"></div></div>
-                    <div class="sentiment-pct" style="color:#ef4444;">18%</div>
-                </div>
-                <div class="sentiment-bar">
-                    <div class="sentiment-label">Neutral</div>
-                    <div class="bar-track" style="background:#374151;"><div style="height:100%; background:#9ca3af; border-radius:4px; width:10%;"></div></div>
-                    <div class="sentiment-pct" style="color:#9ca3af;">10%</div>
-                </div>
-                <div style="margin-top:16px; font-size:12px; color:#6b7280; line-height:1.6;">
-                    <strong style="color:#9ca3af;">Key drivers:</strong><br>
-                    • US-Iran ceasefire optimism<br>
-                    • Asia tech/AI rally<br>
-                    • Lower oil boosting risk appetite<br>
-                    • Fed one-cut consensus limiting downside
-                </div>
-                <div style="margin-top:12px; font-size:11px; color:#6b7280;">
-                    Sentiment is proxy-based on news flow, not social media scraping. Adjust positioning accordingly.
-                </div>
-            </div>
+        <div class="sector-item">
+          <div class="sector-name">Quantum Computing</div>
+          <div class="sector-change up">🚀 Broad gains</div>
         </div>
-
-        <!-- BROKER ACTIVITY -->
-        <div class="card">
-            <div class="card-header">🏦 Broker Calls &amp; Corporate Actions</div>
-            <div class="card-body">
-                <table class="watch-table">
-                    <thead>
-                        <tr>
-                            <th>Broker</th>
-                            <th>Action</th>
-                            <th>Stock</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="broker-name">JP Morgan</td>
-                            <td class="action-down">↓ Downgrade</td>
-                            <td>OCBC</td>
-                            <td style="font-size:12px; color:#9ca3af;">Lower price target</td>
-                        </tr>
-                        <tr>
-                            <td class="broker-name">JP Morgan</td>
-                            <td class="negative">↓ Lower PT</td>
-                            <td>DBS</td>
-                            <td style="font-size:12px; color:#9ca3af;">Price target reduced</td>
-                        </tr>
-                        <tr>
-                            <td class="broker-name">JP Morgan</td>
-                            <td class="action-buy">↑ Raise PT</td>
-                            <td>SGX</td>
-                            <td style="font-size:12px; color:#9ca3af;">Raised price target</td>
-                        </tr>
-                        <tr>
-                            <td class="broker-name">DBS</td>
-                            <td class="action-buy">▲ BUY</td>
-                            <td>SATS</td>
-                            <td style="font-size:12px; color:#9ca3af;">De-escalation trade pick</td>
-                        </tr>
-                        <tr>
-                            <td class="broker-name">DBS</td>
-                            <td class="action-buy">▲ BUY</td>
-                            <td>OCBC</td>
-                            <td style="font-size:12px; color:#9ca3af;">Safe-haven flows, resilient</td>
-                        </tr>
-                        <tr>
-                            <td class="broker-name">Lim &amp; Tan</td>
-                            <td class="action-buy">▲ BUY</td>
-                            <td>Lum Chang</td>
-                            <td style="font-size:12px; color:#9ca3af;">TP S$1.04, +48% raise</td>
-                        </tr>
-                        <tr>
-                            <td class="broker-name">Lim &amp; Tan</td>
-                            <td class="action-buy">▲ BUY</td>
-                            <td>Kingsmen</td>
-                            <td style="font-size:12px; color:#9ca3af;">FY26E +16% profit growth</td>
-                        </tr>
-                        <tr>
-                            <td class="broker-name">OCBC GR</td>
-                            <td class="action-buy">▲ BUY</td>
-                            <td>SMID caps</td>
-                            <td style="font-size:12px; color:#9ca3af;">Watershed reforms moment</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="sources">Sources: The Edge Singapore, Minichart, broker reports · Apr 8–14</div>
-            </div>
-        </div>
-
+      </div>
     </div>
 
-    <div style="text-align:center; margin-top:32px; font-size:11px; color:#4b5563; line-height:1.8;">
-        FinanceNews Dashboard · Auto-generated by Rocky · Sources: CNBC, Yahoo Finance, Business Times, The Edge Singapore, Straits Times, Reuters, Trading Economics, broker reports<br>
-        For informational purposes only. Not financial advice. Past performance is not indicative of future results.
+    <!-- Macro & Fed -->
+    <div class="card card-sm">
+      <div class="section-title">🏛 Macro & Fed Monitor</div>
+      <div class="macro-item">
+        <span class="macro-label">US-Iran ceasefire talks</span>
+        <span class="macro-value up">Ongoing · 2nd round signaled</span>
+      </div>
+      <div class="macro-item">
+        <span class="macro-label">Oil prices</span>
+        <span class="macro-value" style="color:var(--gold)">Elevated vs pre-war levels</span>
+      </div>
+      <div class="macro-item">
+        <span class="macro-label">Fed rate cut probability (year-end)</span>
+        <span class="macro-value flat">~70% priced in</span>
+      </div>
+      <div class="macro-item">
+        <span class="macro-label">VIX (fear gauge)</span>
+        <span class="macro-value flat">Lowest since Feb 26</span>
+      </div>
+      <div class="macro-item">
+        <span class="macro-label">Q1 Earnings season</span>
+        <span class="macro-value up">Results beating estimates</span>
+      </div>
+      <div class="macro-item">
+        <span class="macro-label">Q1 GDP / CPI data</span>
+        <span class="macro-value flat">March data in focus</span>
+      </div>
     </div>
 
-</div>
+  </div>
+
+  <div class="col-side">
+
+    <!-- Singapore Market Watch -->
+    <div class="card card-sm">
+      <div class="section-title">🇸🇬 Singapore Market Watch</div>
+
+      <div class="sg-item">
+        <div class="sg-title">STI +0.3% to 5,021.20 — Broad rally, STI up 13 pts</div>
+        <div class="sg-meta"> Straits Times · 15 Apr 2026</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-title">Sembcorp Industries led gainers, +3% to $7.10</div>
+        <div class="sg-meta"> STI top mover</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-title">DBS +0.2% to $57.70 · OCBC flat $22.88 · UOB -0.03% $37.59</div>
+        <div class="sg-meta"> Banks mixed</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-title">Singapore refutes US trade surplus claim in USTR filing</div>
+        <div class="sg-meta"> Key SG-US trade tension signal · ST</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-title">Air India seeks funds from Tata & Singapore Airlines after $3B loss</div>
+        <div class="sg-meta"> SIA stake at 25.1% · Bloomberg</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-title">Olam CEO Sunny Verghese to step down after ~40 years</div>
+        <div class="sg-meta"> Major leadership reshuffle · Bloomberg</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-title">CapitaLand raises $403M for Asia-Pacific credit fund</div>
+        <div class="sg-meta"> Funds under management growing · ST</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-title">Yen hits new low vs SGD — Singaporeans buying record yen per Singdollar</div>
+        <div class="sg-meta"> STI top mover · ST</div>
+      </div>
+      <div class="sg-item">
+        <div class="sg-title">More Singaporeans piling into crypto as confidence grows</div>
+        <div class="sg-meta"> Despite price volatility · ST</div>
+      </div>
+    </div>
+
+    <!-- Social Sentiment -->
+    <div class="card card-sm">
+      <div class="section-title">💬 Social Sentiment</div>
+      <div class="sentiment-item">
+        <span class="sentiment-name">US-Iran ceasefire talks</span>
+        <span class="sentiment-tag tag-hot">HOT</span>
+      </div>
+      <div class="sentiment-item">
+        <span class="sentiment-name">Q1 bank earnings beat</span>
+        <span class="sentiment-tag tag-warm">WARM</span>
+      </div>
+      <div class="sentiment-item">
+        <span class="sentiment-name">Quantum computing stocks</span>
+        <span class="sentiment-tag tag-hot">HOT</span>
+      </div>
+      <div class="sentiment-item">
+        <span class="sentiment-name">Custom AI chips / Broadcom</span>
+        <span class="sentiment-tag tag-warm">WARM</span>
+      </div>
+      <div class="sentiment-item">
+        <span class="sentiment-name">Nasdaq 11-session streak</span>
+        <span class="sentiment-tag tag-warm">WARM</span>
+      </div>
+      <div class="sentiment-item">
+        <span class="sentiment-name">Oil price / inflation risk</span>
+        <span class="sentiment-tag tag-cool">COOLING</span>
+      </div>
+      <div class="sentiment-item">
+        <span class="sentiment-name">Fed rate path uncertainty</span>
+        <span class="sentiment-tag tag-cool">COOLING</span>
+      </div>
+    </div>
+
+    <!-- Earnings Calendar -->
+    <div class="card card-sm">
+      <div class="section-title">📅 Earnings This Week</div>
+      <div style="font-size:12px; color:var(--muted); line-height:1.8;">
+        Mon 13 Apr: Goldman Sachs<br>
+        Tue 14 Apr: Citigroup, JPMorgan, WFC, JNJ, BlackRock<br>
+        Wed 15 Apr: Morgan Stanley, Bank of America<br>
+        <strong style="color:var(--text)">Thu 16 Apr: Abbott Labs, Netflix, Infosys</strong><br>
+        Fri 17 Apr: Schlumberger, Honeywell
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  FinanceNews Dashboard · Auto-updated daily at 08:00 SGT · Built by Rocky (AI Agent)<br>
+  Sources: Reuters, CNBC, Straits Times, Business Times · Not financial advice
+</footer>
 
 </body>
 </html>
