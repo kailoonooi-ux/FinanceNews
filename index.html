@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinanceNews — Morning Briefing | 17 Apr 2026</title>
+    <title>FinanceNews — Morning Briefing | 18 Apr 2026</title>
     <style>
         :root {
             --bg-primary: #0d1117;
@@ -17,6 +17,7 @@
             --accent-blue: #58a6ff;
             --accent-yellow: #d29922;
             --accent-purple: #a371f7;
+            --accent-orange: #f0883e;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -99,6 +100,7 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
+            align-items: center;
         }
         .news-item .tag {
             padding: 2px 8px;
@@ -113,6 +115,7 @@
         .tag-sg { background: rgba(163,113,247,0.15); color: var(--accent-purple); }
         .tag-energy { background: rgba(210,153,34,0.15); color: var(--accent-yellow); }
         .tag-earn { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+        .tag-new { background: rgba(240,136,62,0.15); color: var(--accent-orange); }
         .section-full { grid-column: 1 / -1; }
         .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
         .source-badge {
@@ -139,9 +142,20 @@
             margin-bottom: 12px;
             margin-top: 24px;
         }
-        .brief-item { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-        .brief-item:last-child { border-bottom: none; }
-        .brief-item strong { color: var(--text-primary); }
+        .alert-box {
+            background: rgba(248,81,73,0.08);
+            border: 1px solid rgba(248,81,73,0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--accent-red);
+            margin-bottom: 16px;
+        }
+        .alert-box.green {
+            background: rgba(63,185,80,0.08);
+            border-color: rgba(63,185,80,0.3);
+            color: var(--accent-green);
+        }
     </style>
 </head>
 <body>
@@ -154,9 +168,14 @@
             <div class="subtitle">Morning Briefing — AI-powered investment intelligence</div>
         </div>
         <div class="timestamp">
-            <div style="font-size:14px;font-weight:600;">17 April 2026, Friday</div>
-            <div>UTC 00:33 · SGT 08:33</div>
+            <div style="font-size:14px;font-weight:600;">18 April 2026, Saturday</div>
+            <div>UTC 00:00 · SGT 08:00</div>
         </div>
+    </div>
+
+    <!-- ALERT BANNER -->
+    <div class="alert-box green">
+        🚀 Wall Street closed at record highs — S&P 500 crossed 7,000 for the first time. Iran ceasefire extension pending — oil surged 11% then retreated as Strait of Hormuz re-opened.
     </div>
 
     <!-- MARKET INDICES -->
@@ -164,69 +183,90 @@
     <div class="market-bar">
         <div class="market-ticker">
             <div class="label">S&P 500</div>
-            <div class="value">~7,000+</div>
-            <div class="change up">▲ RECORD HIGH</div>
+            <div class="value">~7,050</div>
+            <div class="change up">▲ RECORD CLOSE</div>
         </div>
         <div class="market-ticker">
             <div class="label">Nasdaq</div>
-            <div class="value">~18,500+</div>
-            <div class="change up">▲ RECORD (11/12 days)</div>
+            <div class="value">~18,700</div>
+            <div class="change up">▲ 11/12 GAIN DAYS</div>
         </div>
         <div class="market-ticker">
             <div class="label">Dow Jones</div>
-            <div class="value">~39,000+</div>
-            <div class="change up">▲ +115 pts</div>
+            <div class="value">~39,200</div>
+            <div class="change up">▲ +200 pts</div>
         </div>
         <div class="market-ticker">
             <div class="label">STI (Singapore)</div>
-            <div class="value">5,007.83</div>
-            <div class="change down">▼ -0.3%</div>
+            <div class="value">4,990.85</div>
+            <div class="change down">▼ -0.2% (17 Apr)</div>
         </div>
         <div class="market-ticker">
             <div class="label">Brent Oil</div>
-            <div class="value">$99.39</div>
-            <div class="change up">▲ +4.7%</div>
+            <div class="value">~$83</div>
+            <div class="change down">▼ -11% (Hormuz open)</div>
         </div>
     </div>
 
     <!-- TOP STORIES -->
-    <h2 class="section-title">🔴 Top Stories</h2>
+    <h2 class="section-title">🔴 Top Stories — Global</h2>
     <div class="grid">
         <div class="card section-full">
-            <div class="card-header"><span class="emoji">🚀</span> Wall Street Hits Fresh Record Highs — Iran Ceasefire Hopes Drive Rally</div>
+            <div class="card-header"><span class="emoji">🚀</span> Wall Street Hits Fresh Record Highs — Record-Breaking Rally</div>
             <div class="news-item">
-                <div class="headline">S&P 500 closes above 7,000 for first time; notches 11th gain in 12 days</div>
+                <div class="headline">S&P 500 crosses 7,000 for first time ever;Nasdaq notches 11 gains in 12 days — FOMO-driven rally on Iran ceasefire optimism</div>
                 <div class="meta">
-                    <span class="source-badge">AP News / CNBC</span>
+                    <span class="source-badge">CNBC / AP News</span>
                     <span>17 Apr 2026</span>
                     <span class="tag tag-bull">Bullish</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">US stocks have rebounded 10%+ since late-March Iran-war selloff — bulls see further runway</div>
+                <div class="headline">Strait of Hormuz declared open — oil falls 11% from $99.39 peak. Traders placed $900M bet on falling oil ahead of announcement</div>
                 <div class="meta">
-                    <span class="source-badge">Reuters</span>
-                    <span>16 Apr 2026</span>
-                    <span class="tag tag-bull">Bullish</span>
+                    <span class="source-badge">AP News / Straits Times</span>
+                    <span>17 Apr 2026</span>
+                    <span class="tag tag-energy">Energy</span>
+                    <span class="tag tag-bull">Oil Reversal</span>
+                    <span class="tag tag-new">NEW</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">Fed Governor Waller: Iran war + labor market risks keeping Fed on hold — no rate cuts near term</div>
+                <div class="meta">
+                    <span class="source-badge">CNBC</span>
+                    <span>17 Apr 2026</span>
+                    <span class="tag tag-macro">Fed Watch</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
         </div>
 
         <div class="card">
-            <div class="card-header"><span class="emoji">⚔️</span> Middle East — Oil & Ceasefire Watch</div>
+            <div class="card-header"><span class="emoji">⚔️</span> Iran / Middle East — Ceasefire Watch</div>
             <div class="news-item">
-                <div class="headline">Oil jumps 4.7% to $99.39/bbl as Iran ceasefire extension uncertain — key risk: Strait of Hormuz</div>
+                <div class="headline">Iran ceasefire extension decision due next week — Pakistan army chief met Iran parliament speaker</div>
                 <div class="meta">
-                    <span class="source-badge">AP News / Bloomberg</span>
-                    <span class="tag tag-energy">Energy</span>
+                    <span class="source-badge">AP News</span>
+                    <span>17 Apr 2026</span>
                     <span class="tag tag-bear">Geopolitical Risk</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">Pakistan army chief meets Iran parliament speaker — ceasefire extension decision due next week</div>
+                <div class="headline">ING: "Key upside risk = peace talks break down" — not unrealistic given wide gap between demands</div>
                 <div class="meta">
-                    <span class="source-badge">AP News</span>
+                    <span class="source-badge">ING Strategy / AP News</span>
                     <span>17 Apr 2026</span>
+                    <span class="tag tag-bear">Risk Watch</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">JPMorgan's Priya Misra: Demand-side inflation still low — keeps bond yields contained</div>
+                <div class="meta">
+                    <span class="source-badge">CNBC</span>
+                    <span>17 Apr 2026</span>
+                    <span class="tag tag-macro">Bonds</span>
                 </div>
             </div>
         </div>
@@ -234,17 +274,24 @@
         <div class="card">
             <div class="card-header"><span class="emoji">💰</span> Earnings & Corporate</div>
             <div class="news-item">
-                <div class="headline">PepsiCo rises 2.3% — beats Q1 estimates as snack volume recovers after price cuts on Lay's, Doritos</div>
+                <div class="headline">PepsiCo +2.3% — beats Q1 estimates; Lay's, Doritos volume recovers after price cuts</div>
                 <div class="meta">
                     <span class="source-badge">AP News</span>
                     <span class="tag tag-earn">Earnings Beat</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">J.B. Hunt Transport Services +6.3%; Marsh & McLennan +4.4% — both beat expectations</div>
+                <div class="headline">J.B. Hunt Transport +6.3%; Marsh & McLennan +4.4% — both beat expectations</div>
                 <div class="meta">
                     <span class="source-badge">AP News</span>
                     <span class="tag tag-earn">Earnings Beat</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">OnlyFans hits $3.8B valuation — advanced stake sale talks underway</div>
+                <div class="meta">
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
         </div>
@@ -254,35 +301,32 @@
     <h2 class="section-title">🇸🇬 Singapore Market Watch</h2>
     <div class="grid">
         <div class="card section-full">
-            <div class="card-header"><span class="emoji">🇸🇬</span> STI & SGX — Thursday 16 Apr Close</div>
+            <div class="card-header"><span class="emoji">📉</span> STI & SGX — Thursday 17 Apr Close</div>
             <div class="news-item">
-                <div class="headline">STI closed lower at 5,007.83 (-0.3% or -13.37 pts) — bucking positive regional markets despite Hang Seng +1.7%, Nikkei +2.4%, Kospi +2.2%</div>
+                <div class="headline">STI down 0.2% to 4,990.85 — Singapore shares fell despite strong regional rally (Hang Seng +1.7%, Nikkei +2.4%, Kospi +2.2%)</div>
                 <div class="meta">
                     <span class="source-badge">Business Times / Straits Times</span>
-                    <span>16 Apr 2026</span>
+                    <span>17 Apr 2026</span>
                     <span class="tag tag-sg">Singapore</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">Singtel dragged STI down (-1.8%); Mapletree Logistics Trust led gainers (+1.6%)</div>
+                <div class="headline">OCBC lead bidder for HSBC's Indonesia assets (sources) — pending news of US-Iran diplomacy efforts weighed on SGX</div>
                 <div class="meta">
-                    <span class="source-badge">Business Times</span>
-                    <span class="tag tag-sg">Singapore</span>
+                    <span class="source-badge">Straits Times</span>
+                    <span>17 Apr 2026</span>
+                    <span class="tag tag-sg">M&A Watch</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">Local banks: DBS -0.7% (S$57.30), OCBC -1.0% (S$22.66), UOB -0.2% (S$37.52) — broader market gainers 397 vs losers 219</div>
+                <div class="headline">OCBC AGM: shareholders criticized dividend payouts; chairman defended policy. UOB AGM also faced questions on performance and ASEAN expansion</div>
                 <div class="meta">
-                    <span class="source-badge">Business Times</span>
-                    <span>Volume: S$2.3B across 2.1B shares</span>
-                    <span class="tag tag-sg">Singapore</span>
-                </div>
-            </div>
-            <div class="news-item">
-                <div class="headline">Regional rally driven by Middle East peace optimism — but Singapore lagged despite positive Asia sentiment</div>
-                <div class="meta">
-                    <span class="source-badge">Business Times</span>
-                    <span class="tag tag-sg">Macro</span>
+                    <span class="source-badge">Straits Times</span>
+                    <span>17 Apr 2026</span>
+                    <span class="tag tag-sg">Corporate Governance</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
         </div>
@@ -290,78 +334,134 @@
         <div class="card">
             <div class="card-header"><span class="emoji">📊</span> Singapore Corporate Developments</div>
             <div class="news-item">
-                <div class="headline">Amova launching two Q1 2026 funds — Singapore Dividend & Growth Equity Fund (SDGF) and Singapore Small Mid Cap focused fund</div>
+                <div class="headline">Singapore key exports surged 15.3% in March — AI-driven electronics demand driving growth</div>
                 <div class="meta">
-                    <span class="source-badge">Dr Wealth</span>
-                    <span>~15 Apr 2026</span>
-                    <span class="tag tag-sg">Fund Launch</span>
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-sg">Economy</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">Frencken and Valuetronics see buying interest from Amova — small/mid cap momentum in SGX</div>
+                <div class="headline">Olam Group: veteran CEO Sunny Verghese to step down in major reshuffle — Saudi-backed Olam Agri in focus</div>
                 <div class="meta">
-                    <span class="source-badge">Dr Wealth</span>
-                    <span class="tag tag-sg">M&A Activity</span>
+                    <span class="source-badge">Straits Times</span>
+                    <span>17 Apr 2026</span>
+                    <span class="tag tag-sg">Leadership Change</span>
+                    <span class="tag tag-new">NEW</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">CapitaLand raises $403M for Asia-Pacific credit fund — institutional demand strong</div>
+                <div class="meta">
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-sg">Fund Raising</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">Singapore retail investors making bets on Iran war dips and rallies — investor activity elevated</div>
+                <div class="meta">
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-sg">Retail Sentiment</span>
                 </div>
             </div>
         </div>
 
         <div class="card">
-            <div class="card-header"><span class="emoji">🌏</span> Regional Context</div>
+            <div class="card-header"><span class="emoji">🌏</span> Regional & Macro Context</div>
             <div class="news-item">
-                <div class="headline">HK Hang Seng +1.7%, Japan Nikkei +2.4%, Korea Kospi +2.2%, Malaysia KLCI +0.4% — broad Asia rally on US-China trade optimism and Middle East peace hopes</div>
+                <div class="headline">Malaysia Q1 GDP growth dips to 5.3% — early signs of Iran war fallout; inflation ticks up</div>
                 <div class="meta">
-                    <span class="source-badge">Business Times</span>
-                    <span class="tag tag-macro">Regional</span>
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-macro">Malaysia</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">ING: "Key upside risk for market is peace talks between US and Iran break down — not unrealistic given demands remain wide apart"</div>
+                <div class="headline">Rupiah hits record low vs Singdollar — threatening Indonesian arrivals and trade</div>
                 <div class="meta">
-                    <span class="source-badge">AP News / ING Strategy</span>
-                    <span class="tag tag-macro">Risk Watch</span>
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-macro">Forex</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">Singapore property rental market may face headwinds and disruptions in 2026</div>
+                <div class="meta">
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-sg">Property</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">Fidelity: Bull market since 2022 "firmly intact" — but expect slower, bumpier gains ahead</div>
+                <div class="meta">
+                    <span class="source-badge">Fidelity Learning Center</span>
+                    <span class="tag tag-macro">Strategy</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MACRO & SECTOR WATCH -->
-    <h2 class="section-title">🏛️ Macro & Fed Monitor</h2>
+    <!-- SECTOR WATCH -->
+    <h2 class="section-title">🏛️ Sector Watch & Macro</h2>
     <div class="grid">
         <div class="card">
-            <div class="card-header"><span class="emoji">🛢️</span> Oil & Energy</div>
+            <div class="card-header"><span class="emoji">🛢️</span> Energy & Commodities</div>
             <div class="news-item">
-                <div class="headline">Brent crude surges to $99.39 (+4.7%) — oil has ranged from ~$70 pre-war to $119 at peak uncertainty</div>
+                <div class="headline">Brent crude: $99.39 peak → ~$83 now (-11%) after Strait of Hormuz declared open. Key support: $80</div>
                 <div class="meta">
-                    <span class="source-badge">AP News</span>
+                    <span class="source-badge">AP News / Bloomberg</span>
                     <span class="tag tag-energy">Energy</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">Strait of Hormuz remains key chokepoint — ~20% of global oil flows through the waterway</div>
+                <div class="headline">Gold: Still worth holding despite recent price swings — safe-haven demand remains elevated amid Iran uncertainty</div>
                 <div class="meta">
-                    <span class="source-badge">Bloomberg</span>
-                    <span class="tag tag-energy">Geopolitical</span>
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-energy">Gold</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">Traders placed $900M bet on falling oil ahead of Hormuz announcement — smart money positioning notable</div>
+                <div class="meta">
+                    <span class="source-badge">Straits Times</span>
+                    <span class="tag tag-energy">Smart Money</span>
                 </div>
             </div>
         </div>
 
         <div class="card">
-            <div class="card-header"><span class="emoji">📋</span> Market Strategy View</div>
+            <div class="card-header"><span class="emoji">🏦</span> Fed & Interest Rates</div>
             <div class="news-item">
-                <div class="headline">Fidelity: Bull market that began 2022 remains "firmly intact" — but expect slower, bumpier gains ahead</div>
+                <div class="headline">Fed Governor Waller: Iran war + labor market risks keeping Fed on hold. No rush to cut rates</div>
                 <div class="meta">
-                    <span class="source-badge">Fidelity Learning Center</span>
-                    <span>16 Apr 2026</span>
+                    <span class="source-badge">CNBC</span>
+                    <span>17 Apr 2026</span>
+                    <span class="tag tag-macro">Fed Policy</span>
+                    <span class="tag tag-new">NEW</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">If benchmark long-term rates break higher — could pressure both stocks and bond market</div>
+                <div class="headline">JPMorgan's Priya Misra: Demand-side inflation still low — bond yields remain contained</div>
+                <div class="meta">
+                    <span class="source-badge">CNBC</span>
+                    <span class="tag tag-macro">Bonds</span>
+                </div>
+            </div>
+            <div class="news-item">
+                <div class="headline">If long-term rates break higher — could pressure both stocks and bond market simultaneously</div>
                 <div class="meta">
                     <span class="source-badge">Fidelity</span>
                     <span class="tag tag-macro">Rates Risk</span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- SOCIAL SENTIMENT -->
+    <h2 class="section-title">💬 Sentiment & Key Signals</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="card-header"><span class="emoji">📊</span> Market Pulse</div>
             <div class="news-item">
                 <div class="headline">Interactive Brokers: FOMO drove investors back into market on "any semblance of potential Middle East peace"</div>
                 <div class="meta">
@@ -369,23 +469,15 @@
                     <span class="tag tag-macro">Sentiment</span>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- SOCIAL SENTIMENT -->
-    <h2 class="section-title">💬 Social Sentiment & Analyst Calls</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="card-header"><span class="emoji">📊</span> Analyst Activity</div>
             <div class="news-item">
-                <div class="headline">Abbott Laboratories updates Q2 2026 earnings guidance — monitor for healthcare sector implications</div>
+                <div class="headline">Abbott Laboratories updated Q2 2026 earnings guidance — healthcare sector in focus</div>
                 <div class="meta">
                     <span class="source-badge">Daily Political</span>
                     <span>16 Apr 2026</span>
                 </div>
             </div>
             <div class="news-item">
-                <div class="headline">Plexus Corp (NASDAQ:PLXS) hits new 52-week high at $231.25 — extended run in EMS/semiconductor sector</div>
+                <div class="headline">Plexus Corp (NASDAQ:PLXS) hits new 52-week high at $231.25 — EMS/semiconductor momentum</div>
                 <div class="meta">
                     <span class="source-badge">The Markets Daily</span>
                     <span>15 Apr 2026</span>
@@ -401,22 +493,24 @@
         </div>
 
         <div class="card">
-            <div class="card-header"><span class="emoji">🎯</span> Key Market Signals</div>
+            <div class="card-header"><span class="emoji">🎯</span> Key Market Signals — Today</div>
             <div class="tag-list" style="margin-top:8px;">
-                <span class="tag tag-bull" style="padding:6px 12px;font-size:13px;">✅ S&P 500 crossed 7,000 — first time ever</span>
-                <span class="tag tag-bull" style="padding:6px 12px;font-size:13px;">✅ Nasdaq 11/12 consecutive gain days</span>
-                <span class="tag tag-energy" style="padding:6px 12px;font-size:13px;">⚠️ Oil at $99.39 — 4.7% jump</span>
-                <span class="tag tag-sg" style="padding:6px 12px;font-size:13px;">⚠️ STI -0.3% despite regional rally</span>
+                <span class="tag tag-bull" style="padding:6px 12px;font-size:13px;">🚀 S&P 500 > 7,000 — First time ever</span>
+                <span class="tag tag-bull" style="padding:6px 12px;font-size:13px;">🚀 Nasdaq 11/12 gain days</span>
+                <span class="tag tag-bull" style="padding:6px 12px;font-size:13px;">✅ Oil fell 11% — Hormuz open</span>
+                <span class="tag tag-sg" style="padding:6px 12px;font-size:13px;">📉 STI -0.2% despite Asia rally</span>
+                <span class="tag tag-sg" style="padding:6px 12px;font-size:13px;">📈 SG exports +15.3% (Mar)</span>
                 <span class="tag tag-bear" style="padding:6px 12px;font-size:13px;">⚠️ Iran ceasefire decision pending</span>
-                <span class="tag tag-macro" style="padding:6px 12px;font-size:13px;">⚠️ Long-term rates breakout risk</span>
+                <span class="tag tag-macro" style="padding:6px 12px;font-size:13px;">🛡️ Fed on hold — Waller</span>
+                <span class="tag tag-macro" style="padding:6px 12px;font-size:13px;">⚠️ MY Q1 GDP 5.3% — war fallout</span>
             </div>
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="bottom-bar">
-        Dashboard built: 17 Apr 2026 00:33 UTC &nbsp;|&nbsp;
-        Sources: AP News, Reuters, CNBC, Bloomberg, Business Times, Straits Times, Fidelity &nbsp;|&nbsp;
+        Dashboard built: 18 Apr 2026 00:00 UTC &nbsp;|&nbsp;
+        Sources: AP News, CNBC, Bloomberg, Business Times, Straits Times, Fidelity &nbsp;|&nbsp;
         <a href="https://kailoonooi-ux.github.io/FinanceNews/">Live Dashboard</a>
     </div>
 
